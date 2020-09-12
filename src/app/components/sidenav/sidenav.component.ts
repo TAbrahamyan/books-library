@@ -11,6 +11,11 @@ import { ICategories } from '../../interfaces';
 
 export class SidenavComponent {
   categories: ICategories[] = CATEGORIES;
+  darkMode: boolean = false;
+
+  switchModesHandler(): void {
+    this.darkMode = !this.darkMode;
+  }
 
   showCategoryListHandler(categoryIndex: number): void {
     this.categories?.map((category: ICategories, index: number) => {

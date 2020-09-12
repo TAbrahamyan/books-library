@@ -3,74 +3,111 @@
 .mat-drawer-container { position: inherit }
 .mat-sidenav { width: 300px }
 
-.sidenav {
-  .header {
+.dark-sidenav {
+  background: #2E3041 !important;
+
+  .dark-header {
     display: $displayFlex;
     flex-direction: $flexColumn;
     border-bottom: 2px solid $defaultColor;
-    margin-top: 0.5rem;
+    margin-top: $defaultCategoriesMargin;
 
-    p { margin-left: 0.5rem; }
+    .switch-modes {
+      width: 120px;
+      height: 40px;
+      background: #6f7172;
+      border: 2px solid black;
+      border-radius: 25px;
+      margin: 0 0 $defaultCategoriesMargin $defaultCategoriesMargin;
+      cursor: pointer;
+
+      img { margin: 0; width: 40px; }
+
+      .light-mode {
+        margin-left: 0;
+        animation: light-mode 0.5s;
+
+        @keyframes light-mode {
+          0% { transform: translateX(80px) }
+          100% { transform: translateX(0) }
+        }
+      }
+
+      .dark-mode {
+        margin-left: 80px;
+        animation: dark-mode 0.5s;
+
+        @keyframes dark-mode {
+          0% { transform: translateX(-80px) }
+          100% { transform: translateX(0) }
+        }
+      }
+    }
 
     div {
       display: $displayFlex;
       align-items: center;
 
-      p { font-size: 1.3em; margin: 0 0 0.5rem 0.5rem }
-      img { margin: 0 0 0.5rem 0.5rem }
+      p {
+        font-size: 1.3em;
+        margin: 0 0 $defaultCategoriesMargin $defaultCategoriesMargin;
+        color: #F4F7FA;
+      }
+
+      img { margin: 0 0 $defaultCategoriesMargin $defaultCategoriesMargin }
     }
   }
 
-  .categories {
+  @include categories;
+}
+
+.sidenav {
+  .header {
     display: $displayFlex;
     flex-direction: $flexColumn;
+    border-bottom: 2px solid $defaultColor;
+    margin-top: $defaultCategoriesMargin;
 
-    .category {
-      margin: 0.7rem;
+    .switch-modes {
+      width: 120px;
+      height: 40px;
+      background: #6f7172;
+      border: 2px solid black;
+      border-radius: 25px;
+      margin: 0 0 $defaultCategoriesMargin $defaultCategoriesMargin;
+      cursor: pointer;
 
-      .mat-icon {
-        @include flex-content;
-        color: $defaultColor;
-        font-size: 2em;
+      img { margin: 0; width: 40px; }
+
+      .light-mode {
+        margin-left: 0;
+        animation: light-mode 0.5s;
+
+        @keyframes light-mode {
+          0% { transform: translateX(80px) }
+          100% { transform: translateX(0) }
+        }
       }
 
-      &__item {
-        display: $displayFlex;
-        justify-content: space-between;
-        align-items: center;
-        cursor: pointer;
+      .dark-mode {
+        margin-left: 80px;
+        animation: dark-mode 0.5s;
 
-        div { display: $displayFlex; margin-left: 0.5rem }
-        p { margin-left: 0.7em; font-size: $defaultCategoriesSize }
-        .arrow-downward { font-size: $defaultCategoriesSize }
-      }
-
-      &__subcategories {
-        margin: 0.7rem 0 0 2.7rem;
-        cursor: pointer;
-        animation: top-to-bottom 0.5s;
-
-        @keyframes top-to-bottom {
-          0% { transform: translateY(-17px) }
-          100% { transform: translateY(0) }
-        }
-
-        div {
-          display: $displayFlex;
-          align-items: center;
-        }
-
-        .mat-icon, span {
-          font-size: 0.8em;
-          margin: 0.3rem 0;
-        }
-
-        span {
-          white-space: nowrap;
-          overflow: hidden;
-          text-overflow: ellipsis;
+        @keyframes dark-mode {
+          0% { transform: translateX(-80px) }
+          100% { transform: translateX(0) }
         }
       }
     }
+
+    div {
+      display: $displayFlex;
+      align-items: center;
+
+      p { font-size: 1.3em; margin: 0 0 $defaultCategoriesMargin $defaultCategoriesMargin }
+      img { margin: 0 0 $defaultCategoriesMargin $defaultCategoriesMargin }
+    }
   }
+
+  @include categories;
 }

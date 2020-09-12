@@ -1,10 +1,17 @@
-<mat-sidenav-container class="sidenav">
-  <mat-sidenav mode="side" [fixedInViewport]="true" opened>
-    <div class="header">
-      <p>dark</p>
+<mat-sidenav-container>
+  <mat-sidenav [class]="darkMode ? 'dark-sidenav' : 'sidenav'" mode="side" [fixedInViewport]="true" opened>
+    <div [class]="darkMode ? 'dark-header' : 'header'">
+      <div class="switch-modes" (click)="switchModesHandler()">
+        <ng-container *ngIf="darkMode; else lightMode">
+          <img class="dark-mode" src="../../../assets/images/dark_mode.png">
+        </ng-container>
+        <ng-template #lightMode>
+          <img class="light-mode" src="../../../assets/images/light_mode.png">
+        </ng-template>
+      </div>
 
       <div>
-        <img src="../../../assets/images/book.png">
+        <img [src]="darkMode ? '../../../assets/images/dark_mode_book.png' : '../../../assets/images/book.png'">
         <p>Books Library</p>
       </div>
     </div>
@@ -14,16 +21,18 @@
         <div class="category__item" (click)="showCategoryListHandler(i)">
           <div>
             <ng-container *ngIf="category.icon; else notHaveIcon">
-              <img [src]="category.icon">
+              <img [style.background-color]="darkMode ? '#F4F7FA' : ''" [src]="category.icon">
             </ng-container>
             <ng-template #notHaveIcon>
               <mat-icon style="margin-left: 0.5rem"></mat-icon>
             </ng-template>
 
-            <p>{{ category.name }}</p>
+            <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">
+              {{ category.name }}
+            </p>
           </div>
 
-          <mat-icon class="arrow-downward">
+          <mat-icon [style.color]="darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
             {{ !category.icon ? '' : 'arrow_downward' }}
           </mat-icon>
         </div>
@@ -32,7 +41,10 @@
           <div class="category__subcategories">
             <div *ngFor="let categoryItem of category.subCategories; let i = index">
               <mat-icon>album</mat-icon>
-              <span [title]="categoryItem.name">{{ categoryItem.name || '' }}</span>
+
+              <span [title]="categoryItem.name">
+                {{ categoryItem.name || '' }}
+              </span>
             </div>
           </div>
         </ng-container>
