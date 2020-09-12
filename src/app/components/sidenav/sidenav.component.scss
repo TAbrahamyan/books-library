@@ -1,0 +1,46 @@
+@import '../../app.scss';
+
+.mat-drawer-container { position: inherit }
+.mat-sidenav { width: 270px }
+
+.sidenav {
+  .header {
+    display: $displayFlex;
+    flex-direction: $flexColumn;
+    border-bottom: 2px solid $defaultColor;
+    margin-top: 0.5rem;
+
+    p, img { margin-left: 0.5rem }
+
+    div {
+      display: $displayFlex;
+      align-items: center;
+
+      p { font-size: 1.3em; margin: 0.8rem }
+    }
+  }
+
+  .list {
+    display: $displayFlex;
+    flex-direction: $flexColumn;
+
+    .categories {
+      .category {
+        display: $displayFlex;
+        justify-content: space-between;
+        align-items: center;
+        margin: 0.8rem 0.3rem;
+
+        .mat-icon {
+          @include flex-content;
+          color: $defaultColor;
+          font-size: 2em;
+        }
+
+        div { display: $displayFlex; margin-left: 0.5rem }
+        p { margin-left: $defaultCategoriesSize; font-size: $defaultCategoriesSize }
+        .arrow-downward { font-size: $defaultCategoriesSize; cursor: pointer }
+      }
+    }
+  }
+}
