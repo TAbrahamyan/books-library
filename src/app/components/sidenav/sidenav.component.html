@@ -9,9 +9,9 @@
       </div>
     </div>
 
-    <div class="list">
-      <div class="categories">
-        <div class="category">
+    <div class="categories">
+      <div class="category">
+        <div class="category__item">
           <div>
             <mat-icon></mat-icon>
             <p>All</p>
@@ -19,8 +19,10 @@
 
           <mat-icon></mat-icon>
         </div>
+      </div>
 
-        <div class="category">
+      <div class="category">
+        <div class="category__item" (click)="showCategoryListHandler()">
           <div>
             <mat-icon>code</mat-icon>
             <p>Programming</p>
@@ -29,7 +31,31 @@
           <mat-icon class="arrow-downward">arrow_downward</mat-icon>
         </div>
 
-        <div class="category">
+        <div class="category__list" *ngIf="showCategoryList">
+          <div>
+            <mat-icon>album</mat-icon>
+            <span>JavaScript</span>
+          </div>
+
+          <div>
+            <mat-icon>album</mat-icon>
+            <span>Python</span>
+          </div>
+
+          <div>
+            <mat-icon>album</mat-icon>
+            <span>Data strucuter & Algorithms</span>
+          </div>
+
+          <div>
+            <mat-icon>album</mat-icon>
+            <span>Architecture</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="category">
+        <div class="category__item">
           <div>
             <mat-icon>business_center</mat-icon>
             <p>Business</p>

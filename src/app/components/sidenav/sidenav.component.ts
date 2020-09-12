@@ -6,4 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: [ './sidenav.component.scss' ]
 })
 
-export class SidenavComponent { }
+export class SidenavComponent {
+  showCategoryList: boolean = false;
+
+  showCategoryListHandler(): void {
+    this.showCategoryList = !this.showCategoryList;
+  }
+}
