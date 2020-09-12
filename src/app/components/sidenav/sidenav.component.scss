@@ -1,7 +1,7 @@
 @import '../../app.scss';
 
 .mat-drawer-container { position: inherit }
-.mat-sidenav { width: 270px }
+.mat-sidenav { width: 300px }
 
 .sidenav {
   .header {
@@ -26,8 +26,7 @@
     flex-direction: $flexColumn;
 
     .category {
-      margin: 0.3rem;
-      cursor: pointer;
+      margin: 0.7rem;
 
       .mat-icon {
         @include flex-content;
@@ -39,23 +38,38 @@
         display: $displayFlex;
         justify-content: space-between;
         align-items: center;
+        cursor: pointer;
 
         div { display: $displayFlex; margin-left: 0.5rem }
-        p { margin-left: $defaultCategoriesSize; font-size: $defaultCategoriesSize }
+        p { margin-left: 0.7em; font-size: $defaultCategoriesSize }
         .arrow-downward { font-size: $defaultCategoriesSize }
       }
 
-      &__list {
-        margin: 0.7rem 0 0 2.6rem;
-        animation: top-to-bottom 1s;
+      &__subcategories {
+        margin: 0.7rem 0 0 2.7rem;
+        cursor: pointer;
+        animation: top-to-bottom 0.5s;
 
         @keyframes top-to-bottom {
           0% { transform: translateY(-17px) }
           100% { transform: translateY(0) }
         }
 
-        div { display: $displayFlex; align-items: center }
-        .mat-icon, span { font-size: 0.7em }
+        div {
+          display: $displayFlex;
+          align-items: center;
+        }
+
+        .mat-icon, span {
+          font-size: 0.8em;
+          margin: 0.3rem 0;
+        }
+
+        span {
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
+        }
       }
     }
   }

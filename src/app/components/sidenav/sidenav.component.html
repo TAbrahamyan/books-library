@@ -10,59 +10,32 @@
     </div>
 
     <div class="categories">
-      <div class="category">
-        <div class="category__item">
+      <div *ngFor="let category of categories; let i = index" class="category">
+        <div class="category__item" (click)="showCategoryListHandler(i)">
           <div>
-            <mat-icon></mat-icon>
-            <p>All</p>
+            <ng-container *ngIf="category.icon; else notHaveIcon">
+              <img [src]="category.icon">
+            </ng-container>
+            <ng-template #notHaveIcon>
+              <mat-icon style="margin-left: 0.5rem"></mat-icon>
+            </ng-template>
+
+            <p>{{ category.name }}</p>
           </div>
 
-          <mat-icon></mat-icon>
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category__item" (click)="showCategoryListHandler()">
-          <div>
-            <mat-icon>code</mat-icon>
-            <p>Programming</p>
-          </div>
-
-          <mat-icon class="arrow-downward">arrow_downward</mat-icon>
+          <mat-icon class="arrow-downward">
+            {{ !category.icon ? '' : 'arrow_downward' }}
+          </mat-icon>
         </div>
 
-        <div class="category__list" *ngIf="showCategoryList">
-          <div>
-            <mat-icon>album</mat-icon>
-            <span>JavaScript</span>
+        <ng-container *ngIf="category.isShowSubCategories">
+          <div class="category__subcategories">
+            <div *ngFor="let categoryItem of category.subCategories; let i = index">
+              <mat-icon>album</mat-icon>
+              <span [title]="categoryItem.name">{{ categoryItem.name || '' }}</span>
+            </div>
           </div>
-
-          <div>
-            <mat-icon>album</mat-icon>
-            <span>Python</span>
-          </div>
-
-          <div>
-            <mat-icon>album</mat-icon>
-            <span>Data strucuter & Algorithms</span>
-          </div>
-
-          <div>
-            <mat-icon>album</mat-icon>
-            <span>Architecture</span>
-          </div>
-        </div>
-      </div>
-
-      <div class="category">
-        <div class="category__item">
-          <div>
-            <mat-icon>business_center</mat-icon>
-            <p>Business</p>
-          </div>
-
-          <mat-icon class="arrow-downward">arrow_downward</mat-icon>
-        </div>
+        </ng-container>
       </div>
     </div>
   </mat-sidenav>

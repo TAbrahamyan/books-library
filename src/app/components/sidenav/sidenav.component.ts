@@ -1,5 +1,8 @@
 import { Component } from '@angular/core';
 
+import { CATEGORIES } from '../../categories';
+import { ICategories } from '../../interfaces';
+
 @Component({
   selector: 'app-sidenav',
   templateUrl: './sidenav.component.html',
@@ -7,9 +10,13 @@ import { Component } from '@angular/core';
 })
 
 export class SidenavComponent {
-  showCategoryList: boolean = false;
+  categories: ICategories[] = CATEGORIES;
 
-  showCategoryListHandler(): void {
-    this.showCategoryList = !this.showCategoryList;
+  showCategoryListHandler(categoryIndex: number): void {
+    this.categories?.map((category: ICategories, index: number) => {
+      if (index === categoryIndex) {
+        category.isShowSubCategories = !category?.isShowSubCategories;
+      }
+    });
   }
 }
