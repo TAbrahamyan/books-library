@@ -30,11 +30,11 @@
 
         <ng-container *ngIf="category.showSubCategories">
           <div class="category__subcategories">
-            <div *ngFor="let categoryItem of category.subCategories" (click)="subCategoriesHandler(categoryItem?.name)">
+            <div *ngFor="let subCategory of category.subCategories" (click)="subCategoriesHandler(subCategory)">
               <span class="dot" [style.background-color]="darkMode ? '#F4F7FA' : '#42526E'"></span>
 
-              <span class="category-item" [style.color]="darkMode ? '#F4F7FA' : '#42526E'" [title]="categoryItem?.name">
-                {{ categoryItem?.name }}
+              <span class="category-item" [style.color]="darkMode ? '#F4F7FA' : '#42526E'" [title]="subCategory">
+                {{ subCategory }}
               </span>
             </div>
           </div>

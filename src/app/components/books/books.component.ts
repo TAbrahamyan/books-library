@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 
-import { SidenavService } from 'src/app/services/sidenav.service';
+import { SidenavService } from '../..//services/sidenav.service';
+import { BooksService } from '../..//services/books.service';
+import { BOOKS } from '../..//books';
 
 @Component({
   selector: 'app-books',
@@ -9,5 +11,15 @@ import { SidenavService } from 'src/app/services/sidenav.service';
 })
 
 export class BooksListComponent {
-  constructor(public sidenavService: SidenavService) { }
+  searchBook: string;
+
+  constructor(
+    public sidenavService: SidenavService,
+    public booksService: BooksService,
+  ) { }
+
+  searchBookHandler(): void {
+    this.booksService.books =
+      BOOKS.filter((book: any) => book.category.toLowerCase().includes(this.searchBook.toLowerCase()));
+  }
 }

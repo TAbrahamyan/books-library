@@ -6,41 +6,21 @@
     </div>
   </div>
 
-  <div class="books-list">
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
-
-    <div class="books-list__book">
-      <img src="../../../assets/images/books_list.png">
-    </div>
+  <div class="search-book">
+    <input [(ngModel)]="searchBook" id="search-book" (input)="searchBookHandler()">
+    <mat-icon>search</mat-icon>
   </div>
+
+  <ng-container *ngIf="booksService.books.length; else emptyBooks">
+    <div class="books-list">
+      <div *ngFor="let book of booksService.books" class="books-list__book">
+        <img [src]="book.image">
+      </div>
+    </div>
+  </ng-container>
+  <ng-template #emptyBooks>
+    <div class="books-list">
+      <h1>List is empty</h1>
+    </div>
+  </ng-template>
 </div>

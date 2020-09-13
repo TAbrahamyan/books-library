@@ -1,14 +1,10 @@
-interface ISubCategories {
-  id: number;
+export interface ICategories {
   name: string;
-  category: string;
+  icon: string;
+  showSubCategories: boolean;
+  subCategories: string[];
 }
 
-export interface ICategories {
-  id: number;
-  name: string;
-  category: string | null;
-  icon: string | null;
-  showSubCategories: boolean;
-  subCategories: ISubCategories[] | null;
+export interface IBooks {
+  [books: string]: any;
 }

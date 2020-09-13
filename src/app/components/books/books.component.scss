@@ -3,6 +3,26 @@
 .books {
   margin-left: 333px;
 
+  .search-book {
+    @include flex-content;
+    margin: 2rem 0 1rem 0;
+
+    input {
+      padding: 0.5rem;
+      width: 25%;
+      border: 2px solid #fff;
+      border-radius: 25px;
+      outline: none;
+    }
+
+    .mat-icon {
+      position: relative;
+      margin-left: -2rem;
+      color: $defaultColor;
+      cursor: pointer;
+    }
+  }
+
   .header {
     @include flex-content;
     flex-direction: $flexColumn;
@@ -34,8 +54,17 @@
     background: #fff;
 
     &__book {
+      animation: animate-zoom 0.5s;
+
+      @keyframes animate-zoom {
+        0% { transform: scale(0) }
+        100% { transform: scale(1) }
+      }
+
       img {
-        margin: 1rem 3.8rem;
+        width: 250px;
+        height: 300px;
+        margin: 1rem 2rem;
         cursor: pointer;
       }
     }
