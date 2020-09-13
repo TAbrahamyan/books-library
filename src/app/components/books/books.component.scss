@@ -1,0 +1,43 @@
+@import '../../app.scss';
+
+.books {
+  margin-left: 333px;
+
+  .header {
+    @include flex-content;
+    flex-direction: $flexColumn;
+
+    div {
+      background: #fff;
+      width: 50%;
+      padding: 2rem;
+      margin-top: 1rem;
+      border-radius: 75px;
+      text-align: center;
+    }
+
+    .books-library {
+      font-size: 3em;
+      border-bottom: 2px solid $defaultColor;
+    }
+
+    .subcategories-text { font-size: 2.5em }
+  }
+
+  .books-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    border-radius: 75px;
+    margin: 2rem;
+    padding: 2rem;
+    background: #fff;
+
+    &__book {
+      img {
+        margin: 1rem 3.8rem;
+        cursor: pointer;
+      }
+    }
+  }
+}

@@ -5,11 +5,13 @@ import { MaterialModule } from './material.module';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
+import { BooksListComponent } from './components/books/books.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     SidenavComponent,
+    BooksListComponent,
   ],
   imports: [
     BrowserModule,

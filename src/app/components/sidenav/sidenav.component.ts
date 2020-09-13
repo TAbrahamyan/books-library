@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 
 import { CATEGORIES } from '../../categories';
 import { ICategories } from '../../interfaces';
+import { SidenavService } from 'src/app/services/sidenav.service';
 
 @Component({
   selector: 'app-sidenav',
@@ -17,12 +18,15 @@ export class SidenavComponent {
   darkModeBook: string = '../../../assets/images/dark_mode_book.png';
   lightModeBook: string = '../../../assets/images/book.png';
 
-  switchModesHandler(): void {
-    this.darkMode = !this.darkMode;
-  }
+  constructor(public sidenavService: SidenavService) { }
 
   allBooksHandler(): void {
+    this.sidenavService.subCategoriesText = 'All';
     this.categories?.map((category: ICategories) => category.showSubCategories = false);
+  }
+
+  subCategoriesHandler(categoryItem: string): void {
+    this.sidenavService.subCategoriesText = categoryItem;
   }
 
   showCategoryListHandler(categoryIndex: number): void {

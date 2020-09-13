@@ -1,16 +1,13 @@
 <mat-sidenav-container>
   <mat-sidenav [style.background-color]="darkMode ? '#2E3041' : '#fff'" mode="side" [fixedInViewport]="true" opened>
     <div class="header" [style.background-color]="darkMode ? '#2E3041' : '#fff'">
-      <div class="switch-modes" (click)="switchModesHandler()">
+      <div class="switch-modes" (click)="darkMode = !darkMode">
         <img [class]="darkMode ? 'dark-mode' : 'light-mode'" [src]="darkMode ? darkModeIcon : lightModeIcon">
       </div>
 
       <div>
         <img [src]="darkMode ? darkModeBook : lightModeBook">
-
-        <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">
-          Books Library
-        </p>
+        <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">Books Library</p>
       </div>
     </div>
 
@@ -22,21 +19,18 @@
       <div *ngFor="let category of categories; let i = index" class="category">
         <div class="category__item" (click)="showCategoryListHandler(i)">
           <div>
-            <img [src]="category.icon" [style.margin-left]="category.icon ? '' : '1.5rem'">
-
-            <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">
-              {{ category?.name }}
-            </p>
+            <img [src]="category.icon">
+            <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">{{ category?.name }}</p>
           </div>
 
           <mat-icon [style.color]="darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
-            {{ category?.icon ? 'arrow_downward' : '' }}
+            {{ category?.showSubCategories ? 'arrow_downward' : 'arrow_upward' }}
           </mat-icon>
         </div>
 
         <ng-container *ngIf="category.showSubCategories">
           <div class="category__subcategories">
-            <div *ngFor="let categoryItem of category.subCategories">
+            <div *ngFor="let categoryItem of category.subCategories" (click)="subCategoriesHandler(categoryItem?.name)">
               <span class="dot" [style.background-color]="darkMode ? '#F4F7FA' : '#42526E'"></span>
 
               <span class="category-item" [style.color]="darkMode ? '#F4F7FA' : '#42526E'" [title]="categoryItem?.name">
