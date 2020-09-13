@@ -3,18 +3,10 @@ import { ICategories } from './interfaces';
 export const CATEGORIES: ICategories[] = [
   {
     id: 1,
-    name: 'All',
-    category: null,
-    icon: null,
-    isShowSubCategories: false,
-    subCategories: null,
-  },
-  {
-    id: 2,
     name: 'Programming',
     category: 'programming',
     icon: '../assets/images/categories/programming.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -94,11 +86,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 3,
+    id: 2,
     name: 'Business',
     category: 'business',
     icon: '../assets/images/categories/business.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -138,11 +130,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 4,
+    id: 3,
     name: 'Mathematics',
     category: 'mathematics',
     icon: '../assets/images/categories/mathematics.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -222,11 +214,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 5,
+    id: 4,
     name: 'Literature',
     category: 'literature',
     icon: '../assets/images/categories/literature.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -261,11 +253,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 6,
+    id: 5,
     name: 'History',
     category: 'history',
     icon: '../assets/images/categories/history.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -290,11 +282,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 7,
+    id: 6,
     name: 'Education',
     category: 'education',
     icon: '../assets/images/categories/education.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -314,11 +306,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 8,
+    id: 7,
     name: 'Design',
     category: 'design',
     icon: '../assets/images/categories/design.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -343,11 +335,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 9,
+    id: 8,
     name: 'Psychology',
     category: 'psychology',
     icon: '../assets/images/categories/psychology.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -382,11 +374,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 10,
+    id: 9,
     name: 'Techniques',
     category: 'techniques',
     icon: '../assets/images/categories/techniques.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -446,11 +438,11 @@ export const CATEGORIES: ICategories[] = [
     ],
   },
   {
-    id: 11,
+    id: 10,
     name: 'Physics',
     category: 'physics',
     icon: '../assets/images/categories/physics.png',
-    isShowSubCategories: false,
+    showSubCategories: false,
     subCategories: [
       {
         id: 1,
@@ -511,90 +503,6 @@ export const CATEGORIES: ICategories[] = [
         id: 12,
         name: 'Theory of Relativity and Gravitation',
         category: 'physics',
-      },
-    ],
-  },
-  {
-    id: 12,
-    name: 'Medicine',
-    category: 'medicine',
-    icon: '../assets/images/categories/medicine.png',
-    isShowSubCategories: false,
-    subCategories: [
-      {
-        id: 1,
-        name: 'Anatomy and physiology',
-        category: 'medicine',
-      },
-      {
-        id: 2,
-        name: 'Cardiology',
-        category: 'medicine',
-      },
-      {
-        id: 3,
-        name: 'Chinese Medicine',
-        category: 'medicine',
-      },
-      {
-        id: 4,
-        name: 'Clinical Medicine',
-        category: 'medicine',
-      },
-      {
-        id: 5,
-        name: 'Dermatology',
-        category: 'medicine',
-      },
-      {
-        id: 6,
-        name: 'Diabetes',
-        category: 'medicine',
-      },
-      {
-        id: 7,
-        name: 'Endocrinology',
-        category: 'medicine',
-      },
-      {
-        id: 8,
-        name: 'Epidemiology',
-        category: 'medicine',
-      },
-      {
-        id: 9,
-        name: 'Histology',
-        category: 'medicine',
-      },
-      {
-        id: 10,
-        name: 'Neurology',
-        category: 'medicine',
-      },
-      {
-        id: 11,
-        name: 'Oncology',
-        category: 'medicine',
-      },
-      {
-        id: 12,
-        name: 'Ophthalmology',
-        category: 'medicine',
-      },
-      {
-        id: 13,
-        name: 'Pharmacology',
-        category: 'medicine',
-      },
-      {
-        id: 14,
-        name: 'Therapy',
-        category: 'medicine',
-      },
-      {
-        id: 15,
-        name: 'Molecular Medicine',
-        category: 'medicine',
       },
     ],
   },

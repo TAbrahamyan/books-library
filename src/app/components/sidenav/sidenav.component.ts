@@ -12,15 +12,23 @@ import { ICategories } from '../../interfaces';
 export class SidenavComponent {
   categories: ICategories[] = CATEGORIES;
   darkMode: boolean = false;
+  darkModeIcon: string = '../../../assets/images/dark_mode.png';
+  lightModeIcon: string = '../../../assets/images/light_mode.png';
+  darkModeBook: string = '../../../assets/images/dark_mode_book.png';
+  lightModeBook: string = '../../../assets/images/book.png';
 
   switchModesHandler(): void {
     this.darkMode = !this.darkMode;
   }
 
+  allBooksHandler(): void {
+    this.categories?.map((category: ICategories) => category.showSubCategories = false);
+  }
+
   showCategoryListHandler(categoryIndex: number): void {
     this.categories?.map((category: ICategories, index: number) => {
       if (index === categoryIndex) {
-        category.isShowSubCategories = !category?.isShowSubCategories;
+        category.showSubCategories = !category?.showSubCategories;
       }
     });
   }

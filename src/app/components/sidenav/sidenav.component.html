@@ -1,49 +1,46 @@
 <mat-sidenav-container>
-  <mat-sidenav [class]="darkMode ? 'dark-sidenav' : 'sidenav'" mode="side" [fixedInViewport]="true" opened>
-    <div [class]="darkMode ? 'dark-header' : 'header'">
+  <mat-sidenav [style.background-color]="darkMode ? '#2E3041' : '#fff'" mode="side" [fixedInViewport]="true" opened>
+    <div class="header" [style.background-color]="darkMode ? '#2E3041' : '#fff'">
       <div class="switch-modes" (click)="switchModesHandler()">
-        <ng-container *ngIf="darkMode; else lightMode">
-          <img class="dark-mode" src="../../../assets/images/dark_mode.png">
-        </ng-container>
-        <ng-template #lightMode>
-          <img class="light-mode" src="../../../assets/images/light_mode.png">
-        </ng-template>
+        <img [class]="darkMode ? 'dark-mode' : 'light-mode'" [src]="darkMode ? darkModeIcon : lightModeIcon">
       </div>
 
       <div>
-        <img [src]="darkMode ? '../../../assets/images/dark_mode_book.png' : '../../../assets/images/book.png'">
-        <p>Books Library</p>
+        <img [src]="darkMode ? darkModeBook : lightModeBook">
+
+        <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">
+          Books Library
+        </p>
       </div>
     </div>
 
     <div class="categories">
+      <p class="all" [style.color]="darkMode ? '#F4F7FA' : '#42526E'" (click)="allBooksHandler()">
+        All
+      </p>
+
       <div *ngFor="let category of categories; let i = index" class="category">
         <div class="category__item" (click)="showCategoryListHandler(i)">
           <div>
-            <ng-container *ngIf="category.icon; else notHaveIcon">
-              <img [style.background-color]="darkMode ? '#F4F7FA' : ''" [src]="category.icon">
-            </ng-container>
-            <ng-template #notHaveIcon>
-              <mat-icon style="margin-left: 0.5rem"></mat-icon>
-            </ng-template>
+            <img [src]="category.icon" [style.margin-left]="category.icon ? '' : '1.5rem'">
 
             <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">
-              {{ category.name }}
+              {{ category?.name }}
             </p>
           </div>
 
           <mat-icon [style.color]="darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
-            {{ !category.icon ? '' : 'arrow_downward' }}
+            {{ category?.icon ? 'arrow_downward' : '' }}
           </mat-icon>
         </div>
 
-        <ng-container *ngIf="category.isShowSubCategories">
+        <ng-container *ngIf="category.showSubCategories">
           <div class="category__subcategories">
-            <div *ngFor="let categoryItem of category.subCategories; let i = index">
-              <mat-icon>album</mat-icon>
+            <div *ngFor="let categoryItem of category.subCategories">
+              <span class="dot" [style.background-color]="darkMode ? '#F4F7FA' : '#42526E'"></span>
 
-              <span [title]="categoryItem.name">
-                {{ categoryItem.name || '' }}
+              <span class="category-item" [style.color]="darkMode ? '#F4F7FA' : '#42526E'" [title]="categoryItem?.name">
+                {{ categoryItem?.name }}
               </span>
             </div>
           </div>

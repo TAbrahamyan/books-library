@@ -9,6 +9,6 @@ export interface ICategories {
   name: string;
   category: string | null;
   icon: string | null;
-  isShowSubCategories: boolean;
+  showSubCategories: boolean;
   subCategories: ISubCategories[] | null;
 }
