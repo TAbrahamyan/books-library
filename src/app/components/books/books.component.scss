@@ -28,12 +28,10 @@
     flex-direction: $flexColumn;
 
     div {
-      background: #fff;
       width: 50%;
-      padding: 2rem;
       margin-top: 1rem;
-      border-radius: 75px;
       text-align: center;
+      @include round-background;
     }
 
     .books-library {
@@ -45,13 +43,11 @@
   }
 
   .books-list {
-    display: flex;
+    display: $displayFlex;
     justify-content: space-evenly;
     flex-wrap: wrap;
-    border-radius: 75px;
     margin: 2rem;
-    padding: 2rem;
-    background: #fff;
+    @include round-background;
 
     &__book {
       animation: animate-zoom 0.5s;

@@ -3,8 +3,8 @@ import { Component } from '@angular/core';
 import { BOOKS } from '../../books';
 import { CATEGORIES } from '../../categories';
 import { ICategories } from '../../interfaces';
-import { SidenavService } from '../..//services/sidenav.service';
-import { BooksService } from '../..//services/books.service';
+import { SidenavService } from '../../services/sidenav.service';
+import { BooksService } from '../../services/books.service';
 
 @Component({
   selector: 'app-sidenav',

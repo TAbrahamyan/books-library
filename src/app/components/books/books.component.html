@@ -1,3 +1,5 @@
+<app-sidenav></app-sidenav>
+
 <div class="books">
   <div class="header">
     <div>
@@ -14,7 +16,7 @@
   <ng-container *ngIf="booksService.books.length; else emptyBooks">
     <div class="books-list">
       <div *ngFor="let book of booksService.books" class="books-list__book">
-        <img [src]="book.image">
+        <img [src]="book.image" [routerLink]="['/book-detail', navigationName(book.name)]">
       </div>
     </div>
   </ng-container>

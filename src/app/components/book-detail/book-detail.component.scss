@@ -1,0 +1,51 @@
+@import '../../app.scss';
+
+.details {
+  margin-left: 333px;
+
+  .back-btn {
+    margin: 0.5rem;
+    padding: 0.4rem 2rem;
+    font-size: 1em;
+    float: left;
+    color: white;
+    background: #42526E;
+    border-radius: 25px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+  }
+
+  .book-detail {
+    @include flex-content;
+    flex-direction: $flexColumn;
+    margin: 1rem 0 2rem 0;
+
+    .book-name-image {
+      display: $displayFlex;
+      margin-bottom: 2rem;
+      @include round-background;
+
+      p { margin: 0 1rem; width: 350px }
+      img { width: 200px }
+    }
+
+    .book-description {
+      width: 1000px;
+      margin-bottom: 2rem;
+      @include round-background;
+
+      .description {
+        font-size: 1.5em;
+        margin-bottom: 1rem;
+      }
+    }
+
+    .book-info {
+      display: $displayFlex;
+      justify-content: space-evenly;
+      width: 1000px;
+      @include round-background;
+    }
+  }
+}

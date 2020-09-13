@@ -30,7 +30,7 @@
 
         <ng-container *ngIf="category.showSubCategories">
           <div class="category__subcategories">
-            <div *ngFor="let subCategory of category.subCategories" (click)="subCategoriesHandler(subCategory)">
+            <div *ngFor="let subCategory of category.subCategories" (click)="subCategoriesHandler(subCategory)" routerLink="/books">
               <span class="dot" [style.background-color]="darkMode ? '#F4F7FA' : '#42526E'"></span>
 
               <span class="category-item" [style.color]="darkMode ? '#F4F7FA' : '#42526E'" [title]="subCategory">

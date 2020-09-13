@@ -3,3 +3,18 @@
   justify-content: center;
   align-items: $alignCenter;
 }
+
+@mixin page-not-found-404 {
+  font-size: 9em;
+  color: white;
+  position: relative;
+  margin-left: -5rem;
+  padding: 3rem 8rem;
+  border-radius: 50%;
+}
+
+@mixin round-background {
+  background: #fff;
+  border-radius: 75px;
+  padding: 2rem;
+}

@@ -112,6 +112,7 @@
           display: $displayFlex;
           align-items: $alignCenter;
           transition: 0.3s ease-in;
+          outline: none;
 
           &:active {
             box-shadow: inset 0px 100px 0 0 #99f3bd;

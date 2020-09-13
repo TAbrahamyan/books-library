@@ -1,0 +1,40 @@
+@import '../../app.scss';
+
+.page-not-found {
+  @include flex-content;
+  flex-direction: $flexColumn;
+  margin-left: 5rem;
+
+  &__404 {
+    @include flex-content;
+    flex-wrap: wrap;
+
+    &__4 {
+      @include page-not-found-404;
+      background: #395FAA;
+    }
+
+    &__0 {
+      @include page-not-found-404;
+      background: darkred;
+    }
+
+    &__404 {
+      @include page-not-found-404;
+      background: #395FAA;
+    }
+  }
+
+  button {
+    font-size: 1.5em;
+    color: white;
+    background: #395FAA;
+    border: 1px solid #395FAA;
+    border-radius: 25px;
+    margin-top: 2rem;
+    margin-left: -5rem;
+    padding: 0.3rem 3rem;
+    outline: none;
+    cursor: pointer;
+  }
+}

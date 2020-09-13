@@ -4,7 +4,7 @@ export const BOOKS: IBooks = [
   // JavaScript
   {
     category: 'javascript',
-    name: 'Eloquent Javascript: A Modern Introduction to Programming',
+    name: 'Eloquent Javascript A Modern Introduction to Programming',
     author: 'Marijn Haverbeke',
     year: '2018',
     pages: '447',
