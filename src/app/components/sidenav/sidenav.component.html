@@ -1,45 +1,51 @@
-<mat-sidenav-container>
-  <mat-sidenav [style.background-color]="sidenavService.darkMode ? '#2E3041' : '#fff'" mode="side" [fixedInViewport]="true" opened>
-    <div class="header" [style.background-color]="sidenavService.darkMode ? '#2E3041' : '#fff'">
-      <div class="switch-modes" [style.background-color]="sidenavService.darkMode ? '#ccc' : '#42526E'" (click)="switchModesHandler()">
-        <img [class]="sidenavService.darkMode ? 'dark-mode' : 'light-mode'" [src]="sidenavService.darkMode ? darkModeIcon : lightModeIcon">
-      </div>
-
-      <div>
-        <img [src]="sidenavService.darkMode ? darkModeBook : lightModeBook">
-        <p [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'">Books Library</p>
-      </div>
-    </div>
-
-    <div class="categories">
-      <p class="all" [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'" (click)="allBooksHandler()" routerLink="/books">
-        All
-      </p>
-
-      <div *ngFor="let category of categories; let i = index" class="category">
-        <div class="category__item" (click)="showCategoryListHandler(i)">
-          <div>
-            <img [src]="category.icon">
-            <p [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'">{{ category?.name }}</p>
-          </div>
-
-          <mat-icon [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
-            {{ category?.showSubCategories ? 'arrow_downward' : 'arrow_upward' }}
-          </mat-icon>
+<div>
+  <mat-sidenav-container>
+    <mat-sidenav [style.background-color]="sidenavService.darkMode ? '#2E3041' : '#fff'" [mode]="sidenavMode" [fixedInViewport]="true" [(opened)]="booksService.opened">
+      <div class="header" [style.background-color]="sidenavService.darkMode ? '#2E3041' : '#fff'">
+        <div class="switch-modes" [style.background-color]="sidenavService.darkMode ? '#ccc' : '#42526E'" (click)="switchModesHandler()">
+          <img [class]="sidenavService.darkMode ? 'dark-mode' : 'light-mode'" [src]="sidenavService.darkMode ? darkModeIcon : lightModeIcon">
         </div>
 
-        <ng-container *ngIf="category.showSubCategories">
-          <div class="category__subcategories">
-            <div *ngFor="let subCategory of category.subCategories" (click)="subCategoriesHandler(subCategory)" routerLink="/books">
-              <span class="dot" [style.background-color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'"></span>
-
-              <span class="category-item" [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'" [title]="subCategory">
-                {{ subCategory }}
-              </span>
-            </div>
-          </div>
-        </ng-container>
+        <div>
+          <img [src]="sidenavService.darkMode ? darkModeBook : lightModeBook">
+          <p [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'">Books Library</p>
+        </div>
       </div>
-    </div>
-  </mat-sidenav>
-</mat-sidenav-container>
+
+      <div class="categories">
+        <p class="all" [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'" (click)="allBooksHandler()" routerLink="/books">
+          All
+        </p>
+
+        <div *ngFor="let category of categories; let i = index" class="category">
+          <div class="category__item" (click)="showCategoryListHandler(i)">
+            <div>
+              <img [src]="category.icon">
+              <p [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'">{{ category?.name }}</p>
+            </div>
+
+            <mat-icon [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
+              {{ category?.showSubCategories ? 'arrow_downward' : 'arrow_upward' }}
+            </mat-icon>
+          </div>
+
+          <ng-container *ngIf="category.showSubCategories">
+            <div class="category__subcategories">
+              <div *ngFor="let subCategory of category.subCategories" (click)="subCategoriesHandler(subCategory)" routerLink="/books">
+                <span class="dot" [style.background-color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'"></span>
+
+                <span class="category-item" [style.color]="sidenavService.darkMode ? '#F4F7FA' : '#42526E'" [title]="subCategory">
+                  {{ subCategory }}
+                </span>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+    </mat-sidenav>
+  </mat-sidenav-container>
+
+  <mat-icon class="mobile-menu" (click)="booksService.opened = !booksService.opened">
+    menu
+  </mat-icon>
+</div>

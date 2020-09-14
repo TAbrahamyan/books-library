@@ -3,16 +3,24 @@
 .books {
   margin-left: 333px;
 
+  @media (max-width: 900px) {
+    margin-left: 0;
+  }
+
   .search-book {
     @include flex-content;
     margin: 2rem 0 1rem 0;
 
     input {
       padding: 0.5rem;
-      width: 25%;
+      width: 35%;
       border: 2px solid #fff;
       border-radius: 25px;
       outline: none;
+
+      @media (max-width: 1233px) {
+        width: 80%;
+      }
     }
 
     .mat-icon {
@@ -32,6 +40,10 @@
       margin-top: 1rem;
       text-align: center;
       @include round-background;
+
+      @media (max-width: 1233px) {
+        width: 80%;
+      }
     }
 
     .books-library {

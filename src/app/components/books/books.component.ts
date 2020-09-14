@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 
 import { SidenavService } from '../../services/sidenav.service';
 import { BooksService } from '../../services/books.service';
@@ -20,8 +20,7 @@ export class BooksComponent {
   ) { }
 
   searchBookHandler(): void {
-    this.booksService.books =
-      BOOKS.filter((book: IBooks) => book.category.toLowerCase().includes(this.searchBook.toLowerCase()));
+    this.booksService.books = BOOKS.filter((book: IBooks) => book.category.toLowerCase().includes(this.searchBook.toLowerCase()));
   }
 
   navigationName = (name: string): string => name.replace(/[ ]/g, '_');

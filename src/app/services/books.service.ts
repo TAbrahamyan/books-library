@@ -7,4 +7,5 @@ import { IBooks } from '../interfaces';
 
 export class BooksService {
   books: IBooks = BOOKS;
+  opened: boolean = true;
 }

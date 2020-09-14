@@ -1,13 +1,19 @@
 @import '../../app.scss';
 
 .details {
+  @include flex-content;
+  flex-direction: $flexColumn;
+  flex-wrap: wrap;
   margin-left: 333px;
+
+  @media (max-width: 900px) {
+    margin-left: 0;
+  }
 
   .back-btn {
     margin: 0.5rem;
     padding: 0.4rem 2rem;
     font-size: 1em;
-    float: left;
     color: white;
     background: #42526E;
     border-radius: 25px;
@@ -19,19 +25,37 @@
   .book-detail {
     @include flex-content;
     flex-direction: $flexColumn;
+    flex-wrap: wrap;
     margin: 1rem 0 2rem 0;
 
     .book-name-image {
       display: $displayFlex;
+      width: 55%;
       margin-bottom: 2rem;
       @include round-background;
 
-      p { margin: 0 1rem; width: 350px }
+      @media (max-width: 1400px) {
+        @include flex-content;
+        flex-direction: $flexColumn;
+        width: 70%;
+      }
+
+      p {
+        margin: 0 1rem;
+
+        @media (max-width: 1400px) {
+          margin: 1rem;
+          text-align: center;
+        }
+      }
+
       img { width: 200px }
     }
 
     .book-description {
-      width: 1000px;
+      display: $displayFlex;
+      flex-wrap: wrap;
+      width: 70%;
       margin-bottom: 2rem;
       @include round-background;
 
@@ -43,9 +67,19 @@
 
     .book-info {
       display: $displayFlex;
-      justify-content: space-evenly;
-      width: 1000px;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      width: 70%;
       @include round-background;
+
+      div { margin: 1rem }
+
+      @media (max-width: 1400px) {
+        @include flex-content;
+        flex-direction: column;
+        text-align: center;
+      }
     }
   }
 }

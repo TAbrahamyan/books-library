@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 import { BOOKS } from '../../books';
 import { CATEGORIES } from '../../categories';
@@ -12,8 +13,9 @@ import { BooksService } from '../../services/books.service';
   styleUrls: [ './sidenav.component.scss' ]
 })
 
-export class SidenavComponent {
+export class SidenavComponent implements OnInit {
   categories: ICategories[] = CATEGORIES;
+  sidenavMode: string;
   darkModeIcon: string = '../../../assets/images/dark_mode.png';
   lightModeIcon: string = '../../../assets/images/light_mode.png';
   darkModeBook: string = '../../../assets/images/dark_mode_book.png';
@@ -22,7 +24,22 @@ export class SidenavComponent {
   constructor(
     public sidenavService: SidenavService,
     public booksService: BooksService,
+    public breakpointObserver: BreakpointObserver,
   ) { }
+
+  ngOnInit(): void {
+    this.breakpointObserver
+      .observe(['(min-width: 900px)'])
+      .subscribe((state: BreakpointState) => {
+        if (state.matches) {
+          this.booksService.opened = true;
+          this.sidenavMode = 'side';
+        } else {
+          this.booksService.opened = false;
+          this.sidenavMode = 'push';
+        }
+      });
+  }
 
   switchModesHandler(): void {
     this.sidenavService.darkMode = !this.sidenavService.darkMode;

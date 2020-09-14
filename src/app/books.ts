@@ -11,7 +11,7 @@ export const BOOKS: IBooks = [
     format: 'PDF',
     downloadLink: 'https://bit.ly/35wKZPF',
     buyLink: 'https://amzn.to/3bSNm0l',
-    description: 'Eloquent JavaScriptdives into the JavaScript language to show programmers how to write elegant, effective JavaScript code. Like any good programming book,Eloquent JavaScriptbegins with fundamentals--variables, control structures, functions, and data structures--then moves on to complex topics like object-oriented programming and regular expressions',
+    description: 'Eloquent JavaScript dives into the JavaScript language to show programmers how to write elegant, effective JavaScript code. Like any good programming book,Eloquent JavaScriptbegins with fundamentals--variables, control structures, functions, and data structures--then moves on to complex topics like object-oriented programming and regular expressions',
     image: 'https://covers.zlibcdn2.com/covers299/books/e0/16/5a/e0165acb1767639826cf43eb5fab00e9.jpg',
   },
   {
