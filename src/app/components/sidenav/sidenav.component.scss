@@ -17,7 +17,6 @@
     .switch-modes {
       width: 120px;
       height: 40px;
-      background: #42526E;
       border: 2px solid black;
       border-radius: 25px;
       margin: $defaultCategoriesMargin 1.5rem;
@@ -61,6 +60,7 @@
     .all {
       padding-left: 3.8rem;
       padding: 0.5rem 3.8rem;
+      outline: none;
       cursor: pointer;
 
       &:active {

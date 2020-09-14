@@ -14,7 +14,6 @@ import { BooksService } from '../../services/books.service';
 
 export class SidenavComponent {
   categories: ICategories[] = CATEGORIES;
-  darkMode: boolean = false;
   darkModeIcon: string = '../../../assets/images/dark_mode.png';
   lightModeIcon: string = '../../../assets/images/light_mode.png';
   darkModeBook: string = '../../../assets/images/dark_mode_book.png';
@@ -24,6 +23,11 @@ export class SidenavComponent {
     public sidenavService: SidenavService,
     public booksService: BooksService,
   ) { }
+
+  switchModesHandler(): void {
+    this.sidenavService.darkMode = !this.sidenavService.darkMode;
+    localStorage.setItem('mode', JSON.stringify(this.sidenavService.darkMode));
+  }
 
   allBooksHandler(): void {
     this.sidenavService.subCategoriesText = 'All';

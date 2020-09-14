@@ -39,7 +39,10 @@
       border-bottom: 2px solid $defaultColor;
     }
 
-    .subcategories-text { font-size: 2.5em }
+    .subcategories-text {
+      font-size: 2.5em;
+      word-wrap: break-word;
+    }
   }
 
   .books-list {

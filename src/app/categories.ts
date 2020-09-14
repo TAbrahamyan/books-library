@@ -40,33 +40,9 @@ export const CATEGORIES: ICategories[] = [
       'Linear Algebra',
       'Discrete Mathematics',
       'Number Theory',
-      'Operator Theory',
-      'Graph Theory',
-      'Computer Algebra',
       'Analysis',
       'Mathematicsematical Statistics',
   ],
-  },
-  {
-    name: 'Education',
-    icon: '../assets/images/categories/education.png',
-    showSubCategories: false,
-    subCategories: [
-      'Self-help books',
-      'Theses abstracts',
-      'International Conferences and Symposiums',
-    ],
-  },
-  {
-    name: 'Design',
-    icon: '../assets/images/categories/design.png',
-    showSubCategories: false,
-    subCategories: [
-      'Design: Architecture',
-      'Web-design',
-      'Construction: Renovation and interior design',
-      'Construction: Renovation and interior design: Saunas',
-    ],
   },
   {
     name: 'Psychology',
@@ -75,7 +51,6 @@ export const CATEGORIES: ICategories[] = [
     subCategories: [
       'Creative Thinking',
       'The art of communication',
-      'Neuro-Linguistic Programming',
     ],
   },
   {
@@ -83,25 +58,9 @@ export const CATEGORIES: ICategories[] = [
     icon: '../assets/images/categories/techniques.png',
     showSubCategories: false,
     subCategories: [
-      'Automation',
       'Communication',
       'Electronics',
-      'Energy',
-      'Safety and Security',
       'Nanotechnology',
-    ],
-  },
-  {
-    name: 'Physics',
-    icon: '../assets/images/categories/physics.png',
-    showSubCategories: false,
-    subCategories: [
-      'Crystal Physics',
-      'Geophysics',
-      'Physics of lasers',
-      'Plasma Physics',
-      'Quantum Physics',
-      'Theory of Relativity and Gravitation',
     ],
   },
 ];
