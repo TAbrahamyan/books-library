@@ -1,9 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
-import { SidenavService } from '../../services/sidenav.service';
 import { BooksService } from '../../services/books.service';
 import { BOOKS } from '../../books';
-import { IBooks } from '../../interfaces';
 
 @Component({
   selector: 'app-books',
@@ -12,16 +11,21 @@ import { IBooks } from '../../interfaces';
 })
 
 export class BooksComponent {
-  searchBook: string;
-
   constructor(
-    public sidenavService: SidenavService,
+    private router: Router,
     public booksService: BooksService,
   ) { }
 
   searchBookHandler(): void {
-    this.booksService.books = BOOKS.filter((book: IBooks) => book.category.toLowerCase().includes(this.searchBook.toLowerCase()));
+    const subCategories: string = this.booksService.subCategoriesText;
+    this.booksService.books = BOOKS.filter(({ name, category }) => {
+      if (category.toLowerCase() === subCategories.toLowerCase() || subCategories === 'All') {
+        return name.toLowerCase().includes(this.booksService.searchBook.value.toLowerCase());
+      }
+    });
   }
 
-  navigationName = (name: string): string => name.replace(/[ ]/g, '_');
+  navigateToDetailsHandler(bookName: string): void {
+    this.router.navigate(['/book-detail', bookName.replace(/[ ]/g, '_')]);
+  }
 }

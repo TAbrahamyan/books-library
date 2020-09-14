@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { SidenavService } from './services/sidenav.service';
+
+import { BooksService } from './services/books.service';
 
 @Component({
   selector: 'app-root',
@@ -7,13 +8,13 @@ import { SidenavService } from './services/sidenav.service';
 })
 
 export class AppComponent implements OnInit {
-  constructor(private sidenavService: SidenavService) { }
+  constructor(private booksService: BooksService) { }
 
   ngOnInit(): void {
     const savedMode = JSON.parse(localStorage.getItem('mode'));
 
     if (savedMode) {
-      this.sidenavService.darkMode = savedMode;
+      this.booksService.darkMode = savedMode;
     }
   }
 }

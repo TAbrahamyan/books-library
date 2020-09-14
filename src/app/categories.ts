@@ -1,4 +1,9 @@
-import { ICategories } from './interfaces';
+export interface ICategories {
+  name: string;
+  icon: string;
+  showSubCategories: boolean;
+  subCategories: string[];
+}
 
 export const CATEGORIES: ICategories[] = [
   {

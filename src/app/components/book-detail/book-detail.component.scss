@@ -6,31 +6,28 @@
   flex-wrap: wrap;
   margin-left: 333px;
 
-  @media (max-width: 900px) {
-    margin-left: 0;
-  }
+  @media (max-width: 900px) { margin-left: 0 }
 
   .back-btn {
-    margin: 0.5rem;
+    margin: $defaultMarginSpace 0;
     padding: 0.4rem 2rem;
     font-size: 1em;
-    color: white;
+    color: $whiteColor;
     background: #42526E;
     border-radius: 25px;
-    border: none;
-    outline: none;
-    cursor: pointer;
+    border: $none;
+    outline: $none;
+    cursor: $pointer;
   }
 
   .book-detail {
     @include flex-content;
     flex-direction: $flexColumn;
-    flex-wrap: wrap;
-    margin: 1rem 0 2rem 0;
+    margin: $defaultMarginSpace 0;
 
     .book-name-image {
       display: $displayFlex;
-      width: 55%;
+      width: 45%;
       margin-bottom: 2rem;
       @include round-background;
 
@@ -41,10 +38,10 @@
       }
 
       p {
-        margin: 0 1rem;
+        margin: 0 $defaultMarginSpace;
 
         @media (max-width: 1400px) {
-          margin: 1rem;
+          margin-top: $defaultMarginSpace;
           text-align: center;
         }
       }
@@ -59,10 +56,7 @@
       margin-bottom: 2rem;
       @include round-background;
 
-      .description {
-        font-size: 1.5em;
-        margin-bottom: 1rem;
-      }
+      .description { font-size: 1.5em; margin-bottom: 1rem }
     }
 
     .book-info {
@@ -73,11 +67,11 @@
       width: 70%;
       @include round-background;
 
-      div { margin: 1rem }
+      div { margin: $defaultMarginSpace }
 
       @media (max-width: 1400px) {
         @include flex-content;
-        flex-direction: column;
+        flex-direction: $flexColumn;
         text-align: center;
       }
     }

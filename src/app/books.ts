@@ -1,4 +1,6 @@
-import { IBooks } from './interfaces';
+export interface IBooks {
+  [books: string]: any;
+}
 
 export const BOOKS: IBooks = [
   // JavaScript

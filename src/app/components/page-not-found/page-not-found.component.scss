@@ -3,38 +3,35 @@
 .page-not-found {
   @include flex-content;
   flex-direction: $flexColumn;
-  margin-left: 5rem;
 
-  &__404 {
+  .page404 {
     @include flex-content;
-    flex-wrap: wrap;
+    flex-direction: $flexColumn;
+    margin-top: $defaultMarginSpace;
 
-    &__4 {
-      @include page-not-found-404;
-      background: #395FAA;
+    img {
+      position: relative;
+      width: 600px;
+      height: auto;
     }
 
-    &__0 {
-      @include page-not-found-404;
-      background: darkred;
-    }
+    h1 {
+      color: $whiteColor;
+      margin-top: -9.5rem;
+      z-index: 3;
 
-    &__404 {
-      @include page-not-found-404;
-      background: #395FAA;
+      span { color: red }
     }
   }
 
   button {
-    font-size: 1.5em;
-    color: white;
-    background: #395FAA;
-    border: 1px solid #395FAA;
+    font-size: 1.2em;
+    color: $whiteColor;
+    background: url('https://encrypted-tbn0.gstatic.com/images?q=tbn%3AANd9GcSDF8HJcXWfavmn9r-MLKsElyRIgt3SGI6D0A&usqp=CAU');
     border-radius: 25px;
-    margin-top: 2rem;
-    margin-left: -5rem;
-    padding: 0.3rem 3rem;
-    outline: none;
-    cursor: pointer;
+    margin-top: $defaultMarginSpace;
+    padding: 0.3rem 2rem;
+    outline: $none;
+    cursor: $pointer;
   }
 }

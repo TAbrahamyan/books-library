@@ -4,19 +4,19 @@
   <div class="header">
     <div>
       <p class="books-library">Books Library</p>
-      <p class="subcategories-text">{{ sidenavService.subCategoriesText }}</p>
+      <p class="subcategories-text">{{ booksService.subCategoriesText }}</p>
     </div>
   </div>
 
   <div class="search-book">
-    <input [(ngModel)]="searchBook" id="search-book" (input)="searchBookHandler()">
+    <input [formControl]="booksService.searchBook" id="search-book" (input)="searchBookHandler()">
     <mat-icon>search</mat-icon>
   </div>
 
   <ng-container *ngIf="booksService.books.length; else emptyBooks">
     <div class="books-list">
       <div *ngFor="let book of booksService.books" class="books-list__book">
-        <a [routerLink]="['/book-detail', navigationName(book.name)]">
+        <a (click)="navigateToDetailsHandler(book.name)">
           <img [src]="book.image">
         </a>
       </div>
@@ -24,7 +24,7 @@
   </ng-container>
   <ng-template #emptyBooks>
     <div class="books-list">
-      <h1>List is empty</h1>
+      <h1>Ooops:(</h1>
     </div>
   </ng-template>
 </div>

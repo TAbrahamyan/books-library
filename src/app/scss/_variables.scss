@@ -1,7 +1,12 @@
+$whiteColor: white;
 $defaultColor: #42526E;
 $defaultCategoriesSize: 1.1em;
-$defaultCategoriesMargin: 0.5rem;
+$defaultMarginSpace: 0.5rem;
 
 $displayFlex: flex;
 $alignCenter: center;
 $flexColumn: column;
+
+$none: none;
+$pointer: pointer;
+$transitionEaseIn: 0.3s ease-in;

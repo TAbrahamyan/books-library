@@ -2,10 +2,9 @@ import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
 import { BOOKS } from '../../books';
-import { CATEGORIES } from '../../categories';
-import { ICategories } from '../../interfaces';
-import { SidenavService } from '../../services/sidenav.service';
+import { CATEGORIES, ICategories } from '../../categories';
 import { BooksService } from '../../services/books.service';
+import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sidenav',
@@ -22,7 +21,6 @@ export class SidenavComponent implements OnInit {
   lightModeBook: string = '../../../assets/images/book.png';
 
   constructor(
-    public sidenavService: SidenavService,
     public booksService: BooksService,
     public breakpointObserver: BreakpointObserver,
   ) { }
@@ -42,18 +40,19 @@ export class SidenavComponent implements OnInit {
   }
 
   switchModesHandler(): void {
-    this.sidenavService.darkMode = !this.sidenavService.darkMode;
-    localStorage.setItem('mode', JSON.stringify(this.sidenavService.darkMode));
+    this.booksService.darkMode = !this.booksService.darkMode;
+    localStorage.setItem('mode', JSON.stringify(this.booksService.darkMode));
   }
 
   allBooksHandler(): void {
-    this.sidenavService.subCategoriesText = 'All';
-    this.categories?.map((category: ICategories) => category.showSubCategories = false);
+    this.booksService.subCategoriesText = 'All';
     this.booksService.books = BOOKS;
+    this.categories?.map((category: ICategories) => category.showSubCategories = false);
   }
 
   subCategoriesHandler(categoryItem: string): void {
-    this.sidenavService.subCategoriesText = categoryItem;
+    this.booksService.searchBook = new FormControl('');
+    this.booksService.subCategoriesText = categoryItem;
     this.booksService.books = BOOKS.filter((book: any) => book.category.toLowerCase() === categoryItem.toLowerCase());
   }
 
