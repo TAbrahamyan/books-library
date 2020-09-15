@@ -14,7 +14,7 @@
     input {
       padding: 0.5rem;
       width: 35%;
-      border: 2px solid #fff;
+      border: 2px solid $whiteColor;
       border-radius: 25px;
       outline: $none;
 
@@ -31,9 +31,8 @@
     }
   }
 
-  .header {
+  header {
     @include flex-content;
-    flex-direction: $flexColumn;
 
     div {
       width: 50%;
@@ -44,6 +43,12 @@
       @media (max-width: 1233px) {
         width: 80%;
       }
+    }
+
+    .mat-icon {
+      color: $defaultColor;
+      font-size: 2em;
+      cursor: pointer;
     }
 
     .books-library {
@@ -86,5 +91,33 @@
     @include round-background;
     margin: 2rem;
     font-size: 1.3em;
+  }
+
+  .footer {
+    @include flex-content;
+    flex-direction: $flexColumn;
+    background: $whiteColor;
+    height: 150px;
+    border-radius: 60px 60px 0 0;
+    padding: 2rem;
+
+    &__info {
+      @include flex-content;
+      border-bottom: 2px solid $defaultColor;
+
+      p {
+        margin: $defaultMarginSpace;
+        color: $defaultColor;
+      }
+    }
+
+    &__made-in {
+      @include flex-content;
+      flex-direction: $flexColumn;
+      margin-top: $defaultMarginSpace;
+      font-size: 1.2em;
+
+      p { margin: 0 $defaultMarginSpace }
+    }
   }
 }

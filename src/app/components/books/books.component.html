@@ -1,12 +1,13 @@
 <app-sidenav></app-sidenav>
 
 <div class="books">
-  <div class="header">
+  <header>
     <div>
+      <mat-icon>add_circle_outline</mat-icon>
       <p class="books-library">Books Library</p>
       <p class="subcategories-text">{{ booksService.subCategoriesText }}</p>
     </div>
-  </div>
+  </header>
 
   <div class="search-book">
     <input [formControl]="booksService.searchBook" id="search-book" (input)="searchBookHandler()">
@@ -34,4 +35,16 @@
     [pageSize]="pageSize"
     (page)="getPaginatorData($event)"
   ></mat-paginator>
+
+  <footer class="footer">
+    <div class="footer__info">
+      <img src="../../../assets/images/book.png">
+      <p>Books Library</p>
+    </div>
+
+    <div class="footer__made-in">
+      <p>Made In</p>
+      <p>TAbrahamyan</p>
+    </div>
+  </footer>
 </div>

@@ -19,10 +19,12 @@ export class BooksComponent {
   constructor(public booksService: BooksService) { }
 
   getPaginatorData(event: PageEvent): void {
-    if (event.pageIndex === this.pageIndex + 1){
+    if (event.pageIndex === this.pageIndex + 1) {
       this.lowValue = this.lowValue + this.pageSize;
       this.highValue =  this.highValue + this.pageSize;
-    } else if (event.pageIndex === this.pageIndex - 1){
+    }
+
+    if (event.pageIndex === this.pageIndex - 1) {
       this.lowValue = this.lowValue - this.pageSize;
       this.highValue =  this.highValue - this.pageSize;
     }

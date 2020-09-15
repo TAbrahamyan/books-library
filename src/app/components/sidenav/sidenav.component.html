@@ -6,7 +6,7 @@
       [fixedInViewport]="true"
       [(opened)]="booksService.opened"
     >
-      <div class="header" [style.background-color]="booksService.darkMode ? '#2E3041' : '#fff'">
+      <header class="header" [style.background-color]="booksService.darkMode ? '#2E3041' : '#fff'">
         <div
           class="switch-modes"
           [style.background-color]="booksService.darkMode ? '#ccc' : '#42526E'"
@@ -22,7 +22,7 @@
             Books Library
           </p>
         </div>
-      </div>
+      </header>
 
       <div class="categories">
         <p

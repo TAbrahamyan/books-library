@@ -1,7 +1,7 @@
 @mixin flex-content {
   display: flex;
   justify-content: center;
-  align-items: $alignCenter;
+  align-items: center;
 }
 
 @mixin page-not-found-404 {
@@ -14,7 +14,7 @@
 }
 
 @mixin round-background {
-  background: #fff;
+  background: $whiteColor;
   border-radius: 75px;
   padding: 2rem;
 }

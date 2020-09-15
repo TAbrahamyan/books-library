@@ -20,9 +20,8 @@
   .header {
     display: $displayFlex;
     flex-direction: $flexColumn;
-    margin-top: $defaultMarginSpace;
     border-bottom: 2px solid $defaultColor;
-    width: 322px;
+    width: 319px;
     margin: 0;
     position: fixed;
 
@@ -167,7 +166,7 @@
             margin-left: 0.5rem;
             padding: 0.1rem 0.4rem;
             border-radius: 50%;
-            border: 1px solid #42526E;
+            border: 1px solid $defaultColor;
           }
         }
       }
