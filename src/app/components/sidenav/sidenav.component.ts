@@ -50,6 +50,10 @@ export class SidenavComponent implements OnInit {
     this.categories?.map((category: ICategories): boolean => category.showSubCategories = false);
   }
 
+  subCategoryItemLength(categoryItem: string): number {
+    return BOOKS.filter((book: IBooks): boolean => book.category.toLowerCase() === categoryItem.toLowerCase()).length;
+  }
+
   subCategoriesHandler(categoryItem: string): void {
     this.booksService.searchBook = new FormControl('');
     this.booksService.subCategoriesText = categoryItem;

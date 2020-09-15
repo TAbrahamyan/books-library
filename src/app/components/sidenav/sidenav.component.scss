@@ -161,6 +161,14 @@
             margin-left: 0.3rem;
             transition: $transitionEaseIn;
           }
+
+          .book-categories-length {
+            font-size: 0.7em;
+            margin-left: 0.5rem;
+            padding: 0.1rem 0.4rem;
+            border-radius: 50%;
+            border: 1px solid #42526E;
+          }
         }
       }
     }

@@ -68,6 +68,10 @@
                 >
                   {{ subCategory }}
                 </span>
+
+                <p [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'" class="book-categories-length">
+                  {{ subCategoryItemLength(subCategory) }}
+                </p>
               </div>
             </div>
           </ng-container>
