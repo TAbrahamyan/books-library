@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 
-import { BOOKS } from '../../books';
+import { BOOKS, IBooks } from '../../books';
 import { CATEGORIES, ICategories } from '../../categories';
 import { BooksService } from '../../services/books.service';
 import { FormControl } from '@angular/forms';
@@ -28,7 +28,7 @@ export class SidenavComponent implements OnInit {
   ngOnInit(): void {
     this.breakpointObserver
       .observe(['(min-width: 900px)'])
-      .subscribe((state: BreakpointState) => {
+      .subscribe((state: BreakpointState): void => {
         if (state.matches) {
           this.booksService.opened = true;
           this.sidenavMode = 'side';
@@ -47,17 +47,17 @@ export class SidenavComponent implements OnInit {
   allBooksHandler(): void {
     this.booksService.subCategoriesText = 'All';
     this.booksService.books = BOOKS;
-    this.categories?.map((category: ICategories) => category.showSubCategories = false);
+    this.categories?.map((category: ICategories): boolean => category.showSubCategories = false);
   }
 
   subCategoriesHandler(categoryItem: string): void {
     this.booksService.searchBook = new FormControl('');
     this.booksService.subCategoriesText = categoryItem;
-    this.booksService.books = BOOKS.filter((book: any) => book.category.toLowerCase() === categoryItem.toLowerCase());
+    this.booksService.books = BOOKS.filter((book: IBooks): boolean => book.category.toLowerCase() === categoryItem.toLowerCase());
   }
 
   showCategoryListHandler(categoryIndex: number): void {
-    this.categories?.map((category: ICategories, index: number) => {
+    this.categories?.map((category: ICategories, index: number): void => {
       if (index === categoryIndex) {
         category.showSubCategories = !category?.showSubCategories;
       }

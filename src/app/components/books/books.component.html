@@ -15,8 +15,8 @@
 
   <ng-container *ngIf="booksService.books.length; else emptyBooks">
     <div class="books-list">
-      <div *ngFor="let book of booksService.books" class="books-list__book">
-        <a (click)="navigateToDetailsHandler(book.name)">
+      <div *ngFor="let book of booksService.books | slice: lowValue : highValue" class="books-list__book">
+        <a [routerLink]="['/book-detail', navigateByBookName(book.name)]">
           <img [src]="book.image">
         </a>
       </div>
@@ -27,4 +27,11 @@
       <h1>Ooops:(</h1>
     </div>
   </ng-template>
+
+  <mat-paginator
+    class="paginator"
+    [length]="booksService.books.length"
+    [pageSize]="pageSize"
+    (page)="getPaginatorData($event)"
+  ></mat-paginator>
 </div>

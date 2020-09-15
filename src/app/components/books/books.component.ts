@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 
 import { BooksService } from '../../services/books.service';
-import { BOOKS } from '../../books';
+import { BOOKS, IBooks } from '../../books';
+import { PageEvent } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-books',
@@ -11,21 +11,34 @@ import { BOOKS } from '../../books';
 })
 
 export class BooksComponent {
-  constructor(
-    private router: Router,
-    public booksService: BooksService,
-  ) { }
+  pageIndex: number = 0;
+  lowValue: number = 0;
+  highValue: number = 8;
+  pageSize: number = Math.ceil(this.booksService.books.length / this.highValue);
+
+  constructor(public booksService: BooksService) { }
+
+  getPaginatorData(event: PageEvent): void {
+    if (event.pageIndex === this.pageIndex + 1){
+      this.lowValue = this.lowValue + this.pageSize;
+      this.highValue =  this.highValue + this.pageSize;
+    } else if (event.pageIndex === this.pageIndex - 1){
+      this.lowValue = this.lowValue - this.pageSize;
+      this.highValue =  this.highValue - this.pageSize;
+    }
+
+    this.pageIndex = event.pageIndex;
+  }
 
   searchBookHandler(): void {
-    const subCategories: string = this.booksService.subCategoriesText;
-    this.booksService.books = BOOKS.filter(({ name, category }) => {
-      if (category.toLowerCase() === subCategories.toLowerCase() || subCategories === 'All') {
-        return name.toLowerCase().includes(this.booksService.searchBook.value.toLowerCase());
+    const { searchBook, subCategoriesText }: BooksService = this.booksService;
+
+    this.booksService.books = BOOKS.filter(({ name, category }: IBooks): string => {
+      if (category.toLowerCase() === subCategoriesText.toLowerCase() || subCategoriesText === 'All') {
+        return name.toLowerCase().includes(searchBook.value.toLowerCase());
       }
     });
   }
 
-  navigateToDetailsHandler(bookName: string): void {
-    this.router.navigate(['/book-detail', bookName.replace(/[ ]/g, '_')]);
-  }
+  navigateByBookName = (bookName: string): string => bookName.replace(/[ ]/g, '_');
 }

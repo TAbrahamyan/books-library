@@ -19,7 +19,8 @@ export class BookDetailComponent implements OnInit {
 
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
-      this.book = this.booksService.books.find((listBook: IBooks) => listBook.name.replace(/[ ]/g, '_') === params.get('name'));
+      this.book = this.booksService.books.find((listBook: IBooks): boolean =>
+        listBook.name.replace(/[ ]/g, '_') === params.get('name'));
     });
   }
 }
