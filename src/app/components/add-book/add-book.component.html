@@ -1,0 +1,46 @@
+<app-sidenav></app-sidenav>
+
+<div class="add-book">
+  <button mat-raised-button routerLink="/books" class="back-btn">Go back</button>
+  <header>Add book</header>
+
+  <form class="form" [formGroup]="bookForm">
+    <mat-form-field appearance="outline">
+      <mat-label>Book name</mat-label>
+      <input matInput #bookName formControlName="bookName" placeholder="Book name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Author name</mat-label>
+      <input matInput #authorName formControlName="authorName" placeholder="Author name">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Pages</mat-label>
+      <input matInput #pages formControlName="pages" placeholder="Pages">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Book year</mat-label>
+      <mat-select #bookYear formControlName="bookYear">
+        <mat-option *ngFor="let year of years" [value]="year">
+          {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shorten bitly download link</mat-label>
+      <input matInput #downloadLink formControlName="downloadLink" placeholder="Shorten bitly download link">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Shorten bitly buy link (Amazon)</mat-label>
+      <input matInput #buyLink formControlName="buyLink" placeholder="Shorten bitly buy link (Amazon)">
+    </mat-form-field>
+
+    <button mat-raised-button class="add-book-btn">
+      Add
+    </button>
+  </form>
+</div>

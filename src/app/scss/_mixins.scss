@@ -18,3 +18,15 @@
   border-radius: 75px;
   padding: 2rem;
 }
+
+@mixin back-button-styles {
+  margin: $defaultMarginSpace 0;
+  padding: 0.1rem 2rem;
+  font-size: 1em;
+  color: $whiteColor;
+  background: $defaultColor;
+  border-radius: 25px;
+  border: $none;
+  outline: $none;
+  cursor: $pointer;
+}

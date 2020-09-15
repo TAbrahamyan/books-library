@@ -3,7 +3,7 @@
 <div class="books">
   <header>
     <div>
-      <mat-icon>add_circle_outline</mat-icon>
+      <mat-icon routerLink="/add-book">add_circle_outline</mat-icon>
       <p class="books-library">Books Library</p>
       <p class="subcategories-text">{{ booksService.subCategoriesText }}</p>
     </div>
@@ -35,16 +35,4 @@
     [pageSize]="pageSize"
     (page)="getPaginatorData($event)"
   ></mat-paginator>
-
-  <footer class="footer">
-    <div class="footer__info">
-      <img src="../../../assets/images/book.png">
-      <p>Books Library</p>
-    </div>
-
-    <div class="footer__made-in">
-      <p>Made In</p>
-      <p>TAbrahamyan</p>
-    </div>
-  </footer>
 </div>

@@ -10,6 +10,7 @@ import { SidenavComponent } from './components/sidenav/sidenav.component';
 import { BooksComponent } from './components/books/books.component';
 import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
 import { BookDetailComponent } from './components/book-detail/book-detail.component';
+import { AddBookComponent } from './components/add-book/add-book.component';
 
 @NgModule({
   declarations: [
@@ -18,6 +19,7 @@ import { BookDetailComponent } from './components/book-detail/book-detail.compon
     BooksComponent,
     PageNotFoundComponent,
     BookDetailComponent,
+    AddBookComponent,
   ],
   imports: [
     BrowserModule,

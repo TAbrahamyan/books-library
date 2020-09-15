@@ -1,11 +1,9 @@
-@import '../../app.scss';
+@import '../../app';
 
 .books {
   margin-left: 333px;
 
-  @media (max-width: 900px) {
-    margin-left: 0;
-  }
+  @media (max-width: 900px) { margin-left: 0 }
 
   .search-book {
     @include flex-content;
@@ -18,9 +16,8 @@
       border-radius: 25px;
       outline: $none;
 
-      @media (max-width: 1233px) {
-        width: 80%;
-      }
+      @media (max-width: 1233px) { width: 80% }
+      @media (max-width: 440px) { width: 100% }
     }
 
     .mat-icon {
@@ -36,19 +33,19 @@
 
     div {
       width: 50%;
-      margin-top: 1rem;
-      text-align: center;
+      margin-top: 2rem;
+      text-align: $center;
       @include round-background;
 
-      @media (max-width: 1233px) {
-        width: 80%;
-      }
+      @media (max-width: 1233px) { width: 80% }
+      @media (max-width: 440px) { width: 100% }
     }
 
     .mat-icon {
       color: $defaultColor;
       font-size: 2em;
-      cursor: pointer;
+      outline: $none;
+      cursor: $pointer;
     }
 
     .books-library {
@@ -65,9 +62,11 @@
   .books-list {
     display: $displayFlex;
     justify-content: space-evenly;
-    flex-wrap: wrap;
-    margin: 2rem;
+    flex-wrap: $flexWrap;
+    margin: 2rem 0;
     @include round-background;
+
+    @media (max-width: 440px) { width: 100% }
 
     &__book {
       animation: animate-zoom 0.5s;
@@ -89,35 +88,9 @@
   .paginator {
     @include flex-content;
     @include round-background;
-    margin: 2rem;
+    margin: 2rem 0;
     font-size: 1.3em;
-  }
 
-  .footer {
-    @include flex-content;
-    flex-direction: $flexColumn;
-    background: $whiteColor;
-    height: 150px;
-    border-radius: 60px 60px 0 0;
-    padding: 2rem;
-
-    &__info {
-      @include flex-content;
-      border-bottom: 2px solid $defaultColor;
-
-      p {
-        margin: $defaultMarginSpace;
-        color: $defaultColor;
-      }
-    }
-
-    &__made-in {
-      @include flex-content;
-      flex-direction: $flexColumn;
-      margin-top: $defaultMarginSpace;
-      font-size: 1.2em;
-
-      p { margin: 0 $defaultMarginSpace }
-    }
+    @media (max-width: 440px) { width: 100% }
   }
 }
