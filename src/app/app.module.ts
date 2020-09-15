@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MaterialModule } from './material.module';
 import { AppRoutingModule } from './app-routing.module';
+import { TextMaskModule } from 'angular2-text-mask';
 
 import { AppComponent } from './app.component';
 import { SidenavComponent } from './components/sidenav/sidenav.component';
@@ -28,6 +29,7 @@ import { AddBookComponent } from './components/add-book/add-book.component';
     BrowserAnimationsModule,
     MaterialModule,
     AppRoutingModule,
+    TextMaskModule,
   ],
   providers: [],
   bootstrap: [ AppComponent ],

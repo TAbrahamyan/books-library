@@ -32,7 +32,6 @@
     @include flex-content;
 
     div {
-      width: 50%;
       margin-top: 2rem;
       text-align: $center;
       @include round-background;
@@ -41,16 +40,23 @@
       @media (max-width: 440px) { width: 100% }
     }
 
-    .mat-icon {
-      color: $defaultColor;
-      font-size: 2em;
-      outline: $none;
-      cursor: $pointer;
-    }
+    .info {
+      @include flex-content;
+      flex-wrap: wrap;
+      margin: 0;
 
-    .books-library {
-      font-size: 3em;
-      border-bottom: 2px solid $defaultColor;
+      .mat-icon {
+        @include flex-content;
+        margin-left: 2rem;
+        font-size: 3em;
+        color: $defaultColor;
+        outline: $none;
+        cursor: $pointer;
+      }
+
+      .books-library {
+        font-size: 3em;
+      }
     }
 
     .subcategories-text {

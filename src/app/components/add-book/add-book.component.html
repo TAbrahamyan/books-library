@@ -7,17 +7,17 @@
   <form class="form" [formGroup]="bookForm">
     <mat-form-field appearance="outline">
       <mat-label>Book name</mat-label>
-      <input matInput #bookName formControlName="bookName" placeholder="Book name">
+      <input matInput #bookName formControlName="bookName" [textMask]="{mask: stringValidation, guide: false}" placeholder="Book name">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Author name</mat-label>
-      <input matInput #authorName formControlName="authorName" placeholder="Author name">
+      <input matInput #authorName formControlName="authorName" [textMask]="{mask: stringValidation, guide: false}" placeholder="Author name">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
       <mat-label>Pages</mat-label>
-      <input matInput #pages formControlName="pages" placeholder="Pages">
+      <input matInput #pages formControlName="pages" [textMask]="{mask: pagesValidation, guide: false}" placeholder="Pages">
     </mat-form-field>
 
     <mat-form-field appearance="outline">
@@ -25,6 +25,15 @@
       <mat-select #bookYear formControlName="bookYear">
         <mat-option *ngFor="let year of years" [value]="year">
           {{ year }}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Category</mat-label>
+      <mat-select #bookCategory formControlName="bookCategory">
+        <mat-option *ngFor="let category of categories" [value]="category">
+          {{ category }}
         </mat-option>
       </mat-select>
     </mat-form-field>
@@ -39,7 +48,21 @@
       <input matInput #buyLink formControlName="buyLink" placeholder="Shorten bitly buy link (Amazon)">
     </mat-form-field>
 
-    <button mat-raised-button class="add-book-btn">
+    <mat-form-field appearance="outline">
+      <mat-label>Image url</mat-label>
+      <input matInput #imageLink formControlName="imageLink" pplaceholder="Image url">
+    </mat-form-field>
+
+    <mat-form-field appearance="outline">
+      <mat-label>Description</mat-label>
+      <textarea matInput #description formControlName="description" [rows]="5" placeholder="Description"></textarea>
+    </mat-form-field>
+
+    <button
+      mat-raised-button
+      (click)="addBookHandler()"
+      class="add-book-btn"
+    >
       Add
     </button>
   </form>

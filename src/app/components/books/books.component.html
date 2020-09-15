@@ -3,8 +3,10 @@
 <div class="books">
   <header>
     <div>
-      <mat-icon routerLink="/add-book">add_circle_outline</mat-icon>
-      <p class="books-library">Books Library</p>
+      <div class="info">
+        <p class="books-library">Books Library</p>
+        <mat-icon routerLink="/add-book">add_circle_outline</mat-icon>
+      </div>
       <p class="subcategories-text">{{ booksService.subCategoriesText }}</p>
     </div>
   </header>
