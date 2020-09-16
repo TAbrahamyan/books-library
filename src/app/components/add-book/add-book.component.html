@@ -7,99 +7,112 @@
   <form class="form" [formGroup]="bookForm">
     <mat-form-field>
       <mat-label>Book name</mat-label>
-      <input matInput #bookName formControlName="bookName" (input)="bookNameAlert = false" [textMask]="{mask: stringValidation, guide: false}" placeholder="Book name">
+      <input matInput required #bookName name="bookName" formControlName="bookName" placeholder="Book name">
     </mat-form-field>
 
-    <div class="alert" *ngIf="bookNameAlert">Required field</div>
+    <div class="alert" *ngIf="bookForm.controls.bookName.touched && bookForm.controls.bookName.errors">
+      Required field
+    </div>
 
     <mat-form-field>
       <mat-label>Author name</mat-label>
-      <input matInput #authorName formControlName="authorName" (input)="authorNameAlert = false" [textMask]="{mask: stringValidation, guide: false}" placeholder="Author name">
+      <input matInput required name="bookName" formControlName="authorName" placeholder="Author name">
     </mat-form-field>
 
-    <div class="alert" *ngIf="authorNameAlert">Required field</div>
+    <div class="alert" *ngIf="bookForm.controls.authorName?.touched && bookForm.controls.authorName.errors">
+      Required field
+    </div>
 
     <mat-form-field>
       <mat-label>Pages</mat-label>
-      <input matInput #pages formControlName="pages" (input)="pagesCountAlert = false" [textMask]="{mask: pagesValidation, guide: false}" placeholder="Pages">
+      <input matInput required name="pages" formControlName="pages" placeholder="Pages">
     </mat-form-field>
 
-    <div class="alert" *ngIf="pagesCountAlert">
+    <div class="alert" *ngIf="bookForm.controls.pages.touched && bookForm.controls.pages.errors">
       Pages count must be no longer than 10000 page
     </div>
 
     <mat-form-field>
       <mat-label>Book year</mat-label>
-      <mat-select #bookYear formControlName="bookYear" (selectionChange)="bookYearAlert = false">
+      <mat-select required name="bookYear" formControlName="bookYear">
         <mat-option *ngFor="let year of years" [value]="year">
           {{ year }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <div class="alert" *ngIf="bookYearAlert">Required field</div>
+    <div class="alert" *ngIf="bookForm.controls.bookYear.touched && bookForm.controls.bookYear.errors">
+      Required field
+    </div>
 
     <mat-form-field>
       <mat-label>Category</mat-label>
-      <mat-select #bookCategory formControlName="bookCategory" (selectionChange)="bookCategoryAlert = false">
+      <mat-select required name="bookCategory" formControlName="bookCategory">
         <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <div class="alert" *ngIf="bookCategoryAlert">Required field</div>
+    <div class="alert" *ngIf="bookForm.controls.bookCategory.touched && bookForm.controls.bookCategory.errors">
+      Required field
+    </div>
 
     <mat-form-field>
       <mat-label>Shorten bitly download link</mat-label>
-      <input matInput #downloadLink formControlName="downloadLink" (input)="downloadLinkAlert = false" placeholder="https://bit.ly/ ...">
+      <input matInput required name="downloadLink" formControlName="downloadLink" placeholder="https://bit.ly/ ...">
     </mat-form-field>
 
-    <div class="alert" *ngIf="downloadLinkAlert">
+    <div
+      class="alert"
+      *ngIf="bookForm.controls.downloadLink.touched
+          && bookForm.controls.downloadLink.errors
+          && bookForm.controls.downloadLink.errors.validDownloadLink"
+    >
       Download link should start with https://bit.ly/
     </div>
 
     <mat-form-field>
       <mat-label>Shorten bitly buy link (Amazon)</mat-label>
-      <input matInput #buyLink formControlName="buyLink" (input)="buyLinkAlert = false" placeholder="https://amzn.to/ ...">
+      <input matInput required name="buyLink" formControlName="buyLink" placeholder="https://amzn.to/ ...">
     </mat-form-field>
 
-    <div class="alert" *ngIf="buyLinkAlert">
+    <div
+      class="alert"
+      *ngIf="bookForm.controls.buyLink.touched
+          && bookForm.controls.buyLink.errors
+          && bookForm.controls.buyLink.errors.validBuyLink"
+    >
       Buy link should start with https://amzn.to/
     </div>
 
     <mat-form-field>
       <mat-label>Book image url</mat-label>
-      <input matInput #imageLink formControlName="imageLink" (input)="imageLinkAlert" placeholder="https:// ...">
+      <input matInput required name="imageLink" formControlName="imageLink" placeholder="https:// ...">
     </mat-form-field>
 
-    <div class="alert" *ngIf="imageLinkAlert">
+    <div
+      class="alert"
+      *ngIf="bookForm.controls.imageLink.touched
+        && bookForm.controls.imageLink.errors
+        && bookForm.controls.imageLink.errors.validImageLink"
+    >
       Image link should start with https://
     </div>
 
     <mat-form-field>
       <mat-label>Description</mat-label>
-      <textarea matInput #description formControlName="description" (input)="descriptionAlert = false" [rows]="5" placeholder="Description"></textarea>
+      <textarea matInput required name="description" formControlName="description" [rows]="5" placeholder="Description"></textarea>
     </mat-form-field>
 
-    <div class="alert" *ngIf="descriptionAlert">
-      Description text must be no less than 250 letter
+    <div class="alert" *ngIf="bookForm.controls.description.touched && bookForm.controls.description.errors">
+      Description text must be no less than 256 letter
     </div>
 
     <button
       mat-raised-button
       (click)="addBookHandler()"
-      [disabled]="
-      !bookName.value.length
-        || !authorName.value.length
-        || !pages.value.length
-        || !description.value.length
-        || !bookYear.value.length
-        || !bookCategory.value.length
-        || !downloadLink.value.length
-        || !buyLink.value.length
-        || !imageLink.value.length
-      "
+      [disabled]="bookForm.invalid"
       class="add-book-btn"
     >
       Add
