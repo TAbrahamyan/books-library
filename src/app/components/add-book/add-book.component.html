@@ -5,62 +5,101 @@
   <header>Add book</header>
 
   <form class="form" [formGroup]="bookForm">
-    <mat-form-field appearance="outline">
+    <mat-form-field>
       <mat-label>Book name</mat-label>
-      <input matInput #bookName formControlName="bookName" [textMask]="{mask: stringValidation, guide: false}" placeholder="Book name">
+      <input matInput #bookName formControlName="bookName" (input)="bookNameAlert = false" [textMask]="{mask: stringValidation, guide: false}" placeholder="Book name">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="bookNameAlert">Required field</div>
+
+    <mat-form-field>
       <mat-label>Author name</mat-label>
-      <input matInput #authorName formControlName="authorName" [textMask]="{mask: stringValidation, guide: false}" placeholder="Author name">
+      <input matInput #authorName formControlName="authorName" (input)="authorNameAlert = false" [textMask]="{mask: stringValidation, guide: false}" placeholder="Author name">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="authorNameAlert">Required field</div>
+
+    <mat-form-field>
       <mat-label>Pages</mat-label>
-      <input matInput #pages formControlName="pages" [textMask]="{mask: pagesValidation, guide: false}" placeholder="Pages">
+      <input matInput #pages formControlName="pages" (input)="pagesCountAlert = false" [textMask]="{mask: pagesValidation, guide: false}" placeholder="Pages">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="pagesCountAlert">
+      Pages count must be no longer than 10000 page
+    </div>
+
+    <mat-form-field>
       <mat-label>Book year</mat-label>
-      <mat-select #bookYear formControlName="bookYear">
+      <mat-select #bookYear formControlName="bookYear" (selectionChange)="bookYearAlert = false">
         <mat-option *ngFor="let year of years" [value]="year">
           {{ year }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="bookYearAlert">Required field</div>
+
+    <mat-form-field>
       <mat-label>Category</mat-label>
-      <mat-select #bookCategory formControlName="bookCategory">
+      <mat-select #bookCategory formControlName="bookCategory" (selectionChange)="bookCategoryAlert = false">
         <mat-option *ngFor="let category of categories" [value]="category">
           {{ category }}
         </mat-option>
       </mat-select>
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="bookCategoryAlert">Required field</div>
+
+    <mat-form-field>
       <mat-label>Shorten bitly download link</mat-label>
-      <input matInput #downloadLink formControlName="downloadLink" placeholder="Shorten bitly download link">
+      <input matInput #downloadLink formControlName="downloadLink" (input)="downloadLinkAlert = false" placeholder="https://bit.ly/ ...">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="downloadLinkAlert">
+      Download link should start with https://bit.ly/
+    </div>
+
+    <mat-form-field>
       <mat-label>Shorten bitly buy link (Amazon)</mat-label>
-      <input matInput #buyLink formControlName="buyLink" placeholder="Shorten bitly buy link (Amazon)">
+      <input matInput #buyLink formControlName="buyLink" (input)="buyLinkAlert = false" placeholder="https://amzn.to/ ...">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
-      <mat-label>Image url</mat-label>
-      <input matInput #imageLink formControlName="imageLink" pplaceholder="Image url">
+    <div class="alert" *ngIf="buyLinkAlert">
+      Buy link should start with https://amzn.to/
+    </div>
+
+    <mat-form-field>
+      <mat-label>Book image url</mat-label>
+      <input matInput #imageLink formControlName="imageLink" (input)="imageLinkAlert" placeholder="https:// ...">
     </mat-form-field>
 
-    <mat-form-field appearance="outline">
+    <div class="alert" *ngIf="imageLinkAlert">
+      Image link should start with https://
+    </div>
+
+    <mat-form-field>
       <mat-label>Description</mat-label>
-      <textarea matInput #description formControlName="description" [rows]="5" placeholder="Description"></textarea>
+      <textarea matInput #description formControlName="description" (input)="descriptionAlert = false" [rows]="5" placeholder="Description"></textarea>
     </mat-form-field>
+
+    <div class="alert" *ngIf="descriptionAlert">
+      Description text must be no less than 250 letter
+    </div>
 
     <button
       mat-raised-button
       (click)="addBookHandler()"
+      [disabled]="
+      !bookName.value.length
+        || !authorName.value.length
+        || !pages.value.length
+        || !description.value.length
+        || !bookYear.value.length
+        || !bookCategory.value.length
+        || !downloadLink.value.length
+        || !buyLink.value.length
+        || !imageLink.value.length
+      "
       class="add-book-btn"
     >
       Add

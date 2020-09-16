@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { CATEGORIES } from './categories';
 
 import { BooksService } from './services/books.service';
 
@@ -13,9 +12,14 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     const savedMode = JSON.parse(localStorage.getItem('mode'));
+    const savedBooks = JSON.parse(localStorage.getItem('books'));
 
     if (savedMode) {
       this.booksService.darkMode = savedMode;
+    }
+
+    if (savedBooks) {
+      this.booksService.books = savedBooks;
     }
   }
 }

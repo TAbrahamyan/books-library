@@ -27,6 +27,16 @@ export class AddBookComponent {
     description: new FormControl(''),
   });
 
+  bookNameAlert: boolean = false;
+  authorNameAlert: boolean = false;
+  pagesCountAlert: boolean = false;
+  bookYearAlert: boolean = false;
+  bookCategoryAlert: boolean = false;
+  downloadLinkAlert: boolean = false;
+  buyLinkAlert: boolean = false;
+  imageLinkAlert: boolean = false;
+  descriptionAlert: boolean = false;
+
   constructor(
     private router: Router,
     private booksService: BooksService,
@@ -35,8 +45,8 @@ export class AddBookComponent {
       this.years.push(`${i}`);
     }
 
-    const res: any = CATEGORIES?.map((category: ICategories) => category.subCategories);
-    this.categories = res.flat();
+    const bookCategory: any = CATEGORIES?.map((category: ICategories): string[] => category.subCategories);
+    this.categories = bookCategory.flat();
   }
 
   stringValidation = (inputValue: string): RegExp[] => [ ...inputValue ].map(() => /[a-zA-Z ]/g);
@@ -55,28 +65,48 @@ export class AddBookComponent {
       description,
     } = this.bookForm.value;
 
-    if (
-      !(bookName && authorName && pages && bookYear && bookCategory && downloadLink && buyLink && imageLink && description).length
-      || description.length < 100
-    ) {
+    if (!bookName.length) {
+      this.bookNameAlert = true;
       return;
     }
 
-    if (!imageLink.startsWith('https://')) {
-      alert('Invalid image url');
+    if (!authorName.length) {
+      this.authorNameAlert = true;
+      return;
+    }
 
+    if (pages.length >= 5 || !pages.length) {
+      this.pagesCountAlert = true;
+      return;
+    }
+
+    if (!bookYear.length) {
+      this.bookYearAlert = true;
+      return;
+    }
+
+    if (!bookCategory.length) {
+      this.bookCategoryAlert = true;
       return;
     }
 
     if (!downloadLink.startsWith('https://bit.ly/')) {
-      alert('Download link should start with https://bit.ly/');
-
+      this.downloadLinkAlert = true;
       return;
     }
 
     if (!buyLink.startsWith('https://amzn.to/')) {
-      alert('buyLink link should start with https://amzn.to/');
+      this.buyLinkAlert = true;
+      return;
+    }
 
+    if (!imageLink.startsWith('https://')) {
+      this.imageLinkAlert = true;
+      return;
+    }
+
+    if (description.length < 100) {
+      this.descriptionAlert = true;
       return;
     }
 
@@ -94,5 +124,6 @@ export class AddBookComponent {
 
     this.booksService.books.unshift(newBook);
     this.router.navigate(['/books']);
+    localStorage.setItem('books', JSON.stringify(this.booksService.books));
   }
 }
