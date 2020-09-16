@@ -1,17 +1,12 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
-import { BooksComponent } from './components/books/books.component';
-import { PageNotFoundComponent } from './components/page-not-found/page-not-found.component';
-import { BookDetailComponent } from './components/book-detail/book-detail.component';
-import { AddBookComponent } from './components/add-book/add-book.component';
-
 const routes: Routes = [
-  { path: 'books', component: BooksComponent },
-  { path: 'book-detail/:name', component: BookDetailComponent },
-  { path: 'add-book', component: AddBookComponent },
+  { path: 'books', loadChildren: () => import('./components/books/books.module').then(m => m.BooksModule) },
+  { path: 'book-detail/:name', loadChildren: () => import('./components/book-detail/book-detail.module').then(m => m.BookDetailModule) },
+  { path: 'add-book', loadChildren: () => import('./components/add-book/add-book.module').then(m => m.AddBookModule) },
   { path: '', redirectTo: '/books', pathMatch: 'full' },
-  { path: '**', component: PageNotFoundComponent },
+  { path: '**', loadChildren: () => import('./components/page-not-found/page-not-found.module').then(m => m.PageNotFoundModule) },
 ];
 
 @NgModule({

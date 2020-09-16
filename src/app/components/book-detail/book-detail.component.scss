@@ -4,7 +4,7 @@
   @include flex-content;
   flex-direction: $flexColumn;
   flex-wrap: $flexWrap;
-  margin-left: 333px;
+  margin-left: $appSpace;
 
   @media (max-width: 900px) { margin-left: 0 }
   .back-btn { @include back-button-styles }

@@ -1,5 +1,3 @@
-<app-sidenav></app-sidenav>
-
 <div class="books">
   <header>
     <div>
@@ -12,25 +10,23 @@
     </div>
   </header>
 
-  <div class="search-book">
-    <input [formControl]="booksService.searchBook" id="search-book" (input)="searchBookHandler()">
-    <mat-icon>search</mat-icon>
-  </div>
+  <mat-form-field>
+    <mat-label>Search</mat-label>
+    <input matInput #bookName [formControl]="searchBook" (input)="searchBookHandler()" placeholder="Search">
+  </mat-form-field>
 
-  <ng-container *ngIf="booksService.books.length; else emptyBooks">
-    <div class="books-list">
+  <div class="books-list">
+    <ng-container *ngIf="booksService.books.length; else emptyBooks">
       <div *ngFor="let book of booksService.books | slice: lowValue : highValue" class="books-list__book">
         <a [routerLink]="['/book-detail', navigateByBookName(book.name)]">
           <img [src]="book.image">
         </a>
       </div>
-    </div>
-  </ng-container>
-  <ng-template #emptyBooks>
-    <div class="books-list">
+    </ng-container>
+    <ng-template #emptyBooks>
       <h1>Ooops:(</h1>
-    </div>
-  </ng-template>
+    </ng-template>
+  </div>
 
   <mat-paginator
     class="paginator"

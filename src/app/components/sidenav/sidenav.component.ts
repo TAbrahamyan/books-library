@@ -4,7 +4,6 @@ import { BreakpointObserver, BreakpointState } from '@angular/cdk/layout';
 import { BOOKS, IBooks } from '../../books';
 import { CATEGORIES, ICategories } from '../../categories';
 import { BooksService } from '../../services/books.service';
-import { FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-sidenav',
@@ -55,7 +54,6 @@ export class SidenavComponent implements OnInit {
   }
 
   subCategoriesHandler(categoryItem: string): void {
-    this.booksService.searchBook = new FormControl('');
     this.booksService.subCategoriesText = categoryItem;
     this.booksService.books = BOOKS.filter((book: IBooks): boolean => book.category.toLowerCase() === categoryItem.toLowerCase());
   }

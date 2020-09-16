@@ -1,39 +1,19 @@
 @import '../../app';
 
 .books {
-  margin-left: 333px;
+  @include flex-content;
+  flex-direction: $flexColumn;
+  flex-wrap: $flexWrap;
+  margin-left: $appSpace;
 
   @media (max-width: 900px) { margin-left: 0 }
 
-  .search-book {
-    @include flex-content;
-    margin: 2rem 0 1rem 0;
-
-    input {
-      padding: 0.5rem;
-      width: 35%;
-      border: 2px solid $whiteColor;
-      border-radius: 25px;
-      transition: 0.4s ease-out;
-      outline: $none;
-
-      @media (max-width: 1233px) { width: 80% }
-      @media (max-width: 440px) { width: 100% }
-
-      &:hover {
-        background: #e8e8e8;
-        border-color: #e8e8e8;
-      }
-    }
-
-    .mat-icon {
-      position: relative;
-      margin-left: -2rem;
-      color: $defaultColor;
-      cursor: $pointer;
-
-      @media (max-width: 590px) { margin: 0 }
-    }
+  .mat-form-field {
+    margin-top: 2rem;
+    width: 30%;
+    input { color: $defaultColor }
+    @media (max-width: 1120px) { width: 60% }
+    @media (max-width: 440px) { width: 100% }
   }
 
   header {
@@ -43,13 +23,12 @@
       @include round-background;
       text-align: $center;
       margin-top: 2rem;
-
       @media (max-width: 440px) { width: 100% }
     }
 
     .info {
       @include flex-content;
-      flex-wrap: wrap;
+      flex-wrap: $flexWrap;
       margin: 0;
       padding: 0 1rem;
       border-bottom: 2px solid $defaultColor;
@@ -87,6 +66,7 @@
     display: $displayFlex;
     justify-content: space-evenly;
     flex-wrap: $flexWrap;
+    width: 90%;
     margin: 2rem 0;
     @include round-background;
 
@@ -112,6 +92,7 @@
   .paginator {
     @include flex-content;
     @include round-background;
+    width: 90%;
     margin: 2rem 0;
     font-size: 1.3em;
 

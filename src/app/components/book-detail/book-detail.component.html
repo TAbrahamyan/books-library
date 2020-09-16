@@ -1,12 +1,9 @@
-<app-sidenav></app-sidenav>
-
 <div class="details">
   <button mat-raised-button routerLink="/books" class="back-btn">
     Go back
   </button>
 
   <div class="book-detail" *ngIf="book">
-
     <div class="book-name-image">
       <img [src]="book.image">
       <p>{{ book.name }}</p>

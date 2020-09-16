@@ -15,7 +15,7 @@
 .mat-drawer-container { position: inherit }
 
 .mat-sidenav {
-  width: 333px;
+  width: $appSpace;
 
   .header {
     display: $displayFlex;

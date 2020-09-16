@@ -3,6 +3,7 @@
 .page-not-found {
   @include flex-content;
   flex-direction: $flexColumn;
+  margin-left: $appSpace;
 
   .page404 {
     @include flex-content;

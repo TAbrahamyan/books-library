@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormControl } from '@angular/forms';
 
 import { BooksService } from '../../services/books.service';
 import { BOOKS, IBooks } from '../../books';
@@ -11,6 +12,7 @@ import { PageEvent } from '@angular/material/paginator';
 })
 
 export class BooksComponent {
+  searchBook: FormControl = new FormControl('');
   pageIndex: number = 0;
   lowValue: number = 0;
   highValue: number = 8;
@@ -33,11 +35,11 @@ export class BooksComponent {
   }
 
   searchBookHandler(): void {
-    const { searchBook, subCategoriesText }: BooksService = this.booksService;
+    const subCategoriesText: string = this.booksService.subCategoriesText;
 
     this.booksService.books = BOOKS.filter(({ name, category }: IBooks): string => {
       if (category.toLowerCase() === subCategoriesText.toLowerCase() || subCategoriesText === 'All') {
-        return name.toLowerCase().includes(searchBook.value.toLowerCase());
+        return name.toLowerCase().includes(this.searchBook.value.toLowerCase());
       }
     });
   }

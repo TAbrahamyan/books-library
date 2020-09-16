@@ -4,7 +4,7 @@
   @include flex-content;
   flex-direction: $flexColumn;
   flex-wrap: $flexWrap;
-  margin-left: 333px;
+  margin-left: $appSpace;
 
   @media (max-width: 900px) { margin: 0; }
   .back-btn { @include back-button-styles }
@@ -32,9 +32,7 @@
 
     .mat-form-field {
       width: 100%;
-
       input { color: $defaultColor }
-      @media (max-width: 1100px) { width: 100% !important }
     }
 
     .alert {

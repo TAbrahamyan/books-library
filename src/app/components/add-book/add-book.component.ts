@@ -9,8 +9,8 @@ import {
 } from '@angular/forms';
 
 import { BooksService } from '../../services/books.service';
-import { IBooks } from 'src/app/books';
-import { CATEGORIES, ICategories } from 'src/app/categories';
+import { IBooks } from '../../books';
+import { CATEGORIES, ICategories } from '../../categories';
 
 @Component({
   selector: 'app-add-book',
