@@ -1,6 +1,7 @@
 <div class="add-book">
-  <button mat-raised-button routerLink="/books" class="back-btn">Go back</button>
-  <header>Add book</header>
+  <button mat-raised-button routerLink="/books" class="back-btn">
+    Go back
+  </button>
 
   <form class="form" [formGroup]="bookForm">
     <mat-form-field>
@@ -92,8 +93,8 @@
     <div
       class="alert"
       *ngIf="bookForm.controls.imageLink.touched
-        && bookForm.controls.imageLink.errors
-        && bookForm.controls.imageLink.errors.validImageLink"
+          && bookForm.controls.imageLink.errors
+          && bookForm.controls.imageLink.errors.validImageLink"
     >
       Image link should start with https://
     </div>

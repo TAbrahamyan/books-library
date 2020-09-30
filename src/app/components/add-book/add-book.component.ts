@@ -41,7 +41,7 @@ export class AddBookComponent {
       this.years.push(`${i}`);
     }
 
-    const bookCategory: any = CATEGORIES?.map((category: ICategories): string[] => category.subCategories);
+    const bookCategory: any = CATEGORIES.map((category: ICategories) => category.subCategories);
     this.categories = bookCategory.flat();
   }
 

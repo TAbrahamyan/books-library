@@ -84,9 +84,9 @@
       cursor: $pointer;
       transition: $transitionEaseIn;
 
-      &:active {
+      &:hover {
         box-shadow: inset 0px 2px 300px 107px #99f3bd;
-        border-radius: 50px;
+        border-radius: 8px;
       }
     }
 
@@ -110,16 +110,16 @@
         cursor: $pointer;
         transition: $transitionEaseIn;
 
-        &:active {
+        &:hover {
           box-shadow: inset 0px 2px 300px 107px #99f3bd;
-          border-radius: 50px;
+          border-radius: 8px;
         }
 
         div { display: $displayFlex; margin-left: $defaultMarginSpace }
         .arrow-downward { font-size: $defaultCategoriesSize }
 
         p {
-          margin-left: 0.7em;
+          margin: 0.15rem 0 0 0.7rem;
           font-size: $defaultCategoriesSize;
           transition: $transitionEaseIn;
         }
@@ -136,9 +136,9 @@
           user-select: $none;
           outline: $none;
 
-          &:active {
+          &:hover {
             box-shadow: inset 0px 2px 300px 107px #99f3bd;
-            border-radius: 50px;
+            border-radius: 4px;
           }
 
           .dot {

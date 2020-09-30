@@ -4,29 +4,16 @@
   align-items: center;
 }
 
-@mixin page-not-found-404 {
-  font-size: 9em;
-  color: $whiteColor;
-  position: relative;
-  margin-left: -5rem;
-  padding: 3rem 8rem;
-  border-radius: 50%;
-}
-
 @mixin round-background {
   background: $whiteColor;
-  border-radius: 75px;
+  border-radius: 8px;
   padding: 2rem;
 }
 
 @mixin back-button-styles {
   margin: $defaultMarginSpace 0;
-  padding: 0.1rem 2rem;
   font-size: 1em;
   color: $whiteColor;
   background: $defaultColor;
-  border-radius: 25px;
-  border: $none;
-  outline: $none;
-  cursor: $pointer;
+  border-radius: 8px;
 }

@@ -6,7 +6,7 @@
         <mat-icon routerLink="/add-book">add_circle_outline</mat-icon>
       </div>
 
-      <p class="subcategories-text">{{ booksService.subCategoriesText }}</p>
+      <p class="subcategories-text">{{ subCategoriesText }}</p>
     </div>
   </header>
 
@@ -16,8 +16,8 @@
   </mat-form-field>
 
   <div class="books-list">
-    <ng-container *ngIf="booksService.books.length; else emptyBooks">
-      <div *ngFor="let book of booksService.books | slice: lowValue : highValue" class="books-list__book">
+    <ng-container *ngIf="books.length; else emptyBooks">
+      <div *ngFor="let book of books | slice: lowValue : highValue" class="books-list__book">
         <a [routerLink]="['/book-detail', navigateByBookName(book.name)]">
           <img [src]="book.image">
         </a>
@@ -30,7 +30,7 @@
 
   <mat-paginator
     class="paginator"
-    [length]="booksService.books.length"
+    [length]="books.length"
     [pageSize]="pageSize"
     (page)="getPaginatorData($event)"
   ></mat-paginator>

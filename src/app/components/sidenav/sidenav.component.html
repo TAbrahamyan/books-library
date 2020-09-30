@@ -1,24 +1,24 @@
 <ng-container>
   <mat-sidenav-container>
     <mat-sidenav
-      [style.background-color]="booksService.darkMode ? '#2E3041' : '#fff'"
+      [style.background-color]="darkMode ? '#2E3041' : '#fff'"
       [mode]="sidenavMode"
       [fixedInViewport]="true"
-      [(opened)]="booksService.opened"
+      [(opened)]="opened"
     >
-      <header class="header" [style.background-color]="booksService.darkMode ? '#2E3041' : '#fff'">
+      <header class="header" [style.background-color]="darkMode ? '#2E3041' : '#fff'">
         <div
           class="switch-modes"
-          [style.background-color]="booksService.darkMode ? '#ccc' : '#42526E'"
+          [style.background-color]="darkMode ? '#ccc' : '#42526E'"
           (click)="switchModesHandler()"
         >
-          <img [class]="booksService.darkMode ? 'dark-mode' : 'light-mode'" [src]="booksService.darkMode ? darkModeIcon : lightModeIcon">
+          <img [class]="darkMode ? 'dark-mode' : 'light-mode'" [src]="darkMode ? darkModeIcon : lightModeIcon">
         </div>
 
         <div routerLink="/books">
-          <img [src]="booksService.darkMode ? darkModeBook : lightModeBook">
+          <img [src]="darkMode ? darkModeBook : lightModeBook">
 
-          <p [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'" >
+          <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'" >
             Books Library
           </p>
         </div>
@@ -27,24 +27,24 @@
       <div class="categories">
         <p
           class="all"
-          [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'"
+          [style.color]="darkMode ? '#F4F7FA' : '#42526E'"
           (click)="allBooksHandler()"
           routerLink="/books"
         >
           All
         </p>
 
-        <div *ngFor="let category of categories; let i = index" class="category">
-          <div class="category__item" (click)="showCategoryListHandler(i)">
+        <div *ngFor="let category of categories" class="category">
+          <div class="category__item" (click)="category.showSubCategories = !category.showSubCategories">
             <div>
               <img [src]="category.icon">
 
-              <p [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'">
+              <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'">
                 {{ category?.name }}
               </p>
             </div>
 
-            <mat-icon [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
+            <mat-icon [style.color]="darkMode ? '#F4F7FA' : '#42526E'" class="arrow-downward">
               {{ category?.showSubCategories ? 'arrow_downward' : 'arrow_upward' }}
             </mat-icon>
           </div>
@@ -58,18 +58,18 @@
               >
                 <span
                   class="dot"
-                  [style.background-color]="booksService.darkMode ? '#F4F7FA' : '#42526E'"
+                  [style.background-color]="darkMode ? '#F4F7FA' : '#42526E'"
                 ></span>
 
                 <span
                   class="category-item"
-                  [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'"
+                  [style.color]="darkMode ? '#F4F7FA' : '#42526E'"
                   [title]="subCategory"
                 >
                   {{ subCategory }}
                 </span>
 
-                <p [style.color]="booksService.darkMode ? '#F4F7FA' : '#42526E'" class="book-categories-length">
+                <p [style.color]="darkMode ? '#F4F7FA' : '#42526E'" class="book-categories-length">
                   {{ subCategoryItemLength(subCategory) }}
                 </p>
               </div>
@@ -80,7 +80,7 @@
     </mat-sidenav>
   </mat-sidenav-container>
 
-  <mat-icon class="mobile-menu" (click)="booksService.opened = !booksService.opened">
+  <mat-icon class="mobile-menu" (click)="opened = !opened">
     menu
   </mat-icon>
 </ng-container>

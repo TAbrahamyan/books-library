@@ -14,6 +14,8 @@ import { BooksService } from '../../services/books.service';
 export class SidenavComponent implements OnInit {
   categories: ICategories[] = CATEGORIES;
   sidenavMode: string;
+  opened: boolean = this.booksService.opened;
+  darkMode: boolean = this.booksService.darkMode;
   darkModeIcon: string = '../../../assets/images/dark_mode.png';
   lightModeIcon: string = '../../../assets/images/light_mode.png';
   darkModeBook: string = '../../../assets/images/dark_mode_book.png';
@@ -29,40 +31,32 @@ export class SidenavComponent implements OnInit {
       .observe(['(min-width: 900px)'])
       .subscribe((state: BreakpointState): void => {
         if (state.matches) {
-          this.booksService.opened = true;
+          this.opened = true;
           this.sidenavMode = 'side';
         } else {
-          this.booksService.opened = false;
+          this.opened = false;
           this.sidenavMode = 'push';
         }
       });
   }
 
   switchModesHandler(): void {
-    this.booksService.darkMode = !this.booksService.darkMode;
-    localStorage.setItem('mode', JSON.stringify(this.booksService.darkMode));
+    this.darkMode = !this.darkMode;
+    localStorage.setItem('mode', JSON.stringify(this.darkMode));
   }
 
   allBooksHandler(): void {
     this.booksService.subCategoriesText = 'All';
     this.booksService.books = BOOKS;
-    this.categories?.map((category: ICategories): boolean => category.showSubCategories = false);
+    this.categories.map((category: ICategories) => category.showSubCategories = false);
   }
 
   subCategoryItemLength(categoryItem: string): number {
-    return BOOKS.filter((book: IBooks): boolean => book.category.toLowerCase() === categoryItem.toLowerCase()).length;
+    return BOOKS.filter((book: IBooks) => book.category.toLowerCase() === categoryItem.toLowerCase()).length;
   }
 
   subCategoriesHandler(categoryItem: string): void {
     this.booksService.subCategoriesText = categoryItem;
-    this.booksService.books = BOOKS.filter((book: IBooks): boolean => book.category.toLowerCase() === categoryItem.toLowerCase());
-  }
-
-  showCategoryListHandler(categoryIndex: number): void {
-    this.categories?.map((category: ICategories, index: number): void => {
-      if (index === categoryIndex) {
-        category.showSubCategories = !category?.showSubCategories;
-      }
-    });
+    this.booksService.books = BOOKS.filter((book: IBooks) => book.category.toLowerCase() === categoryItem.toLowerCase());
   }
 }
